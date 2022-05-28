@@ -9,7 +9,7 @@ const Navbar = () => {
         <li><a>Contact</a></li>
     </>
     return (
-        <div className='navbar bg-base-100'>
+        <div className='navbar bg-base-100 lg:mx-4'>
             <div className='navbar-start'>
                 <div className='dropdown'>
                     <label tabindex='0' className='btn btn-ghost lg:hidden'>
@@ -32,7 +32,7 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className='navbar-end'>
+            <div className='navbar-end lg:mr-8'>
                 <a className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></a>
             </div>
         </div>
