@@ -8,6 +8,8 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/create-post'>Create Post</Link></li>
     </>
     return (
         <div className='navbar bg-base-100 lg:mx-4'>
@@ -34,7 +36,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className='navbar-end lg:mr-8'>
-                <a className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></a>
+                <Link to='/login' className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></Link>
             </div>
         </div>
     );
