@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ResetPassword = () => {
     return (
@@ -48,10 +49,9 @@ const ResetPassword = () => {
                         Reset Password
                     </button>
 
-                    <p class="text-sm text-center text-gray-500">
-                        No account?
-                        <a class="underline" href="">Sign up</a>
-                    </p>
+                    <Link to='/login' class="block w-full px-5 py-3 text-sm font-medium text-white text-center bg-indigo-600 rounded-lg">
+                        Cancel
+                    </Link>
                 </form>
             </div>
         </div>

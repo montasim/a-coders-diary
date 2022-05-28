@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import SocialLogin from '../../Components/SocialLogin';
 
 const Login = () => {
     return (
-        <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 my-20 h-screen">
             <div class="max-w-lg mx-auto">
                 <h1 class="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">Get started today</h1>
 
@@ -85,9 +87,14 @@ const Login = () => {
                     </button>
 
                     <p class="text-sm text-center text-gray-500">
-                        No account?
-                        <a class="underline" href="">Sign up</a>
+                        Forgot Password? <Link class="underline" to="/reset-password">Reset Password</Link>
                     </p>
+
+                    <p class="text-sm text-center text-gray-500">
+                        New here? <Link class="underline" to="/signup">Sign up</Link>
+                    </p>
+
+                    <SocialLogin />
                 </form>
             </div>
         </div>

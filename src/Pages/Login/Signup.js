@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import SocialLogin from '../../Components/SocialLogin';
 
 const Login = () => {
     return (
-        <section class="relative flex flex-wrap lg:h-screen lg:items-center">
+        <section class="relative flex flex-wrap lg:h-screen lg:items-center my-20 h-screen">
             <div class="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
                 <div class="max-w-lg mx-auto text-center">
                     <h1 class="text-2xl font-bold sm:text-3xl">Get started today!</h1>
@@ -79,8 +81,7 @@ const Login = () => {
 
                     <div class="flex items-center justify-between">
                         <p class="text-sm text-gray-500">
-                            No account?
-                            <a class="underline" href="">Sign up</a>
+                            Already have a account? <Link class="underline" to="/login">Login</Link>
                         </p>
 
                         <button
@@ -91,6 +92,9 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
+
+                <SocialLogin />
+
             </div>
 
             <div class="relative w-full h-64 sm:h-96 lg:w-1/2 lg:h-full">
