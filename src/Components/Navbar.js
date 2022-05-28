@@ -1,12 +1,13 @@
 import React from 'react';
 import { RiUserShared2Fill } from 'react-icons/ri';
 import { TiThMenu } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const navbarMenu = <>
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
-        <li><a>Contact</a></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/contact'>Contact</Link></li>
     </>
     return (
         <div className='navbar bg-base-100 lg:mx-4'>

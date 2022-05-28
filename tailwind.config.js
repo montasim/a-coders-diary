@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.{html,js}'],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}', './node_modules/tw-elements/dist/js/**/*.js'],
   theme: {
     extend: {},
   },
@@ -22,5 +22,7 @@ module.exports = {
       'cupcake',
     ],
   },
-  plugins: [require('daisyui'), require('@tailwindcss/forms')],
+  plugins: [
+    require('daisyui', '@tailwindcss/forms')
+  ],
 }
