@@ -1,16 +1,30 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { RiUserShared2Fill } from 'react-icons/ri';
 import { TiThMenu } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
+import auth from '../Hooks/Firebase.Init';
+import Loading from './Loading';
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+
+    if (loading) {
+        return <Loading />;
+    };
+
+    if (error) {
+
+    };
+
     const navbarMenu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/create-post'>Create Post</Link></li>
-    </>
+    </>;
+
     return (
         <div className='navbar bg-base-100 lg:mx-4'>
             <div className='navbar-start'>
@@ -36,7 +50,12 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className='navbar-end lg:mr-8'>
-                <Link to='/login' className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></Link>
+                {user ? <div class="avatar">
+                    <div class="w-14 mask mask-hexagon">
+                        <img src="https://api.lorem.space/image/face?hash=55350" />
+                    </div>
+                </div> :
+                    <Link to='/login' className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></Link>}
             </div>
         </div>
     );
