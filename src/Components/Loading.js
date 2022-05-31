@@ -1,9 +1,10 @@
 import React from 'react';
+import loadingAnimation from '../Assets/GIF/loading.gif';
 
 const Loading = () => {
     return (
         <div className='flex h-screen items-center justify-center'>
-            <progress className="progress progress-gradient-to-r from-primary to-secondary w-56 h-2 lg:h-3"></progress>
+            <img src={loadingAnimation} className='w-40 h-40' alt='' />
         </div>
     );
 };
