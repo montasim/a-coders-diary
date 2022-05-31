@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import Loading from '../../Components/Loading';
 import SocialLogin from '../../Components/SocialLogin';
 import auth from '../../Hooks/Firebase.Init';
 
@@ -17,6 +18,10 @@ const Login = () => {
     const login = event => {
         event.preventDefault();
         signInWithEmailAndPassword(email, password);
+    };
+
+    if (loading) {
+        return <Loading />;
     };
 
     return (
