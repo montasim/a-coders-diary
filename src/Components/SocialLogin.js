@@ -3,6 +3,8 @@ import auth from '../Hooks/Firebase.Init';
 import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithGithub, useSignInWithMicrosoft, useSignInWithTwitter, useSignInWithYahoo } from 'react-firebase-hooks/auth';
 import Loading from './Loading';
 import { toast } from 'react-toastify';
+import { BsGoogle, BsGithub, BsFacebook, BsMicrosoft, BsTwitter } from 'react-icons/bs';
+import { FaYahoo } from 'react-icons/fa';
 
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -35,39 +37,39 @@ const SocialLogin = () => {
 
             <div className="flex items-center justify-evenly">
                 <button onClick={() => signInWithGoogle()}
-                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                    class="px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg"
                 >
-                    Google
+                    <BsGoogle className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithGithub()}
-                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                    class="px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg"
                 >
-                    Github
+                    <BsGithub className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithFacebook()}
-                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                    class="px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg"
                 >
-                    Github
+                    <BsFacebook className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithMicrosoft()}
-                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                    class="px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg"
                 >
-                    Github
+                    <BsMicrosoft className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithTwitter()}
-                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                    class="px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg"
                 >
-                    Github
+                    <BsTwitter className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithYahoo()}
-                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                    class="px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg"
                 >
-                    Github
+                    <FaYahoo className='text-xl' />
                 </button>
             </div>
         </div>
