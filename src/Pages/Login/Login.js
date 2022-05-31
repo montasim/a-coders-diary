@@ -39,11 +39,10 @@ const Login = () => {
     return (
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 mt-10 mb-40 h-screen">
             <div class="max-w-lg mx-auto">
-                <h1 class="text-2xl font-bold text-center text-indigo-600 sm:text-3xl">Get started today</h1>
+                <h1 class="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary sm:text-3xl">Get started today</h1>
 
                 <p class="max-w-md mx-auto mt-4 text-center text-gray-500">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati sunt dolores deleniti inventore quaerat
-                    mollitia?
+                    Find the best working solutions of your coding problem. Share your knowledge and help others.
                 </p>
 
                 <form onSubmit={login} class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
@@ -56,14 +55,14 @@ const Login = () => {
                             <input onBlur={e => setEmail(e.target.value)}
                                 type="email"
                                 id="email"
-                                class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                                class="w-full p-4 pr-12 text-sm border-success rounded-lg shadow-sm"
                                 placeholder="Enter email"
                             />
 
                             <span class="absolute inset-y-0 inline-flex items-center right-4">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 text-gray-400"
+                                    class="w-5 h-5 text-info"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -86,14 +85,14 @@ const Login = () => {
                             <input onBlur={e => setPassword(e.target.value)}
                                 type="password"
                                 id="password"
-                                class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
+                                class="w-full p-4 pr-12 text-sm border-success rounded-lg shadow-sm"
                                 placeholder="Enter password"
                             />
 
                             <span class="absolute inset-y-0 inline-flex items-center right-4">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 text-gray-400"
+                                    class="w-5 h-5 text-info"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -119,7 +118,7 @@ const Login = () => {
                         errorMessage
                     }
 
-                    <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">
+                    <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary rounded-lg">
                         Login
                     </button>
 
