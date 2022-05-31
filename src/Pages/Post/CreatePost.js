@@ -24,14 +24,8 @@ const CreatePost = () => {
     const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
 
     useEffect(() => {
-        const verifyEmail = async () => {
-            await sendEmailVerification(user?.email);
-        };
-
         if (user?.emailVerified === false) {
             navigate('/verify-email');
-
-            verifyEmail();
         };
     }, [user]);
 
