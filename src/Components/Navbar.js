@@ -39,10 +39,10 @@ const Navbar = () => {
         <div className='navbar bg-base-100 lg:mx-4'>
             <div className='navbar-start'>
                 <div className='dropdown'>
-                    <label tabindex='0' className='btn btn-ghost lg:hidden'>
+                    <label tabIndex='0' className='btn btn-ghost lg:hidden'>
                         <TiThMenu className='text-2xl bg-clip-text bg-gradient-to-r from-primary to-secondary' />
                     </label>
-                    <ul tabindex='0' className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-gradient-to-r from-primary to-secondary rounded-box w-52 text-white uppercase font-medium'>
+                    <ul tabIndex='0' className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-gradient-to-r from-primary to-secondary rounded-box w-52 text-white uppercase font-medium'>
                         {
                             navbarMenu
                         }
@@ -66,7 +66,7 @@ const Navbar = () => {
                             <img src={user?.user?.photoURL || defaultUserImage} />
                         </div>
 
-                        <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
+                        <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
                             <li><Link to='/profile'>Profile</Link></li>
                             <li onClick={() => logout()}><Link to='/'>Logout</Link></li>
                         </ul>
