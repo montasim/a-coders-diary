@@ -33,13 +33,13 @@ const SocialLogin = () => {
                 errorMessage
             }
 
-            <button
+            <button onClick={() => signInWithGoogle()}
                 class="w-full inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-blue-500 rounded-lg"
             >
                 Continue With Google
             </button>
 
-            <button
+            <button onClick={() => signInWithGithub()}
                 class="w-full inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-blue-500 rounded-lg"
             >
                 Continue With Github
