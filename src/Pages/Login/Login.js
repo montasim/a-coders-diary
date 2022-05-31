@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin';
+import auth from '../../Hooks/Firebase.Init';
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const login = event => {
+        event.preventDefault();
+        signInWithEmailAndPassword(email, password);
+    };
+
     return (
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 mt-10 mb-40 h-screen">
             <div class="max-w-lg mx-auto">
@@ -13,14 +29,14 @@ const Login = () => {
                     mollitia?
                 </p>
 
-                <form action="" class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
+                <form onSubmit={login} class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
                     <p class="text-lg font-medium">Sign in to your account</p>
 
                     <div>
                         <label for="email" class="text-sm font-medium">Email</label>
 
                         <div class="relative mt-1">
-                            <input
+                            <input onBlur={e => setEmail(e.target.value)}
                                 type="email"
                                 id="email"
                                 class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
@@ -50,7 +66,7 @@ const Login = () => {
                         <label for="password" class="text-sm font-medium">Password</label>
 
                         <div class="relative mt-1">
-                            <input
+                            <input onBlur={e => setPassword(e.target.value)}
                                 type="password"
                                 id="password"
                                 class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
