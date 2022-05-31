@@ -12,6 +12,7 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Login/Signup";
 import ResetPassword from "./Pages/Login/ResetPassword";
 import CreateTag from "./Pages/Post/CreateTag";
+import Profile from "./Pages/User/Profile";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="reset-password" element={<ResetPassword />} />
       </Routes>
       <Footer />
