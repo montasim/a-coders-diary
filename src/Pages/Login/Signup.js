@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin';
+import auth from '../../Hooks/Firebase.Init';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const Login = () => {
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [email, setEmail] = useState('');
+    const [passowrd, setPassword] = useState('');
+    let errorMessage = '';
+
+    const createUser = event => {
+        event.preventDefault();
+
+        createUserWithEmailAndPassword(email, passowrd);
+
+        event.target.reset();
+    };
+
+    if (error) {
+        errorMessage = <p>{error?.message}</p>
+    }
+
     return (
         <section class="relative flex flex-wrap lg:h-screen lg:items-center my-20 h-screen">
             <div class="w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
@@ -15,12 +39,12 @@ const Login = () => {
                     </p>
                 </div>
 
-                <form action="" class="max-w-md mx-auto mt-8 mb-0 space-y-4">
+                <form onSubmit={createUser} action="" class="max-w-md mx-auto mt-8 mb-0 space-y-4">
                     <div>
                         <label for="email" class="sr-only">Email</label>
 
                         <div class="relative">
-                            <input
+                            <input onBlur={(e) => setEmail(e.target.value)}
                                 type="email"
                                 class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                 placeholder="Enter email"
@@ -48,7 +72,7 @@ const Login = () => {
                     <div>
                         <label for="password" class="sr-only">Password</label>
                         <div class="relative">
-                            <input
+                            <input onBlur={(e) => setPassword(e.target.value)}
                                 type="password"
                                 class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                                 placeholder="Enter password"
@@ -84,11 +108,15 @@ const Login = () => {
                             Already have a account? <Link class="underline" to="/login">Login</Link>
                         </p>
 
+                        {
+                            errorMessage
+                        }
+
                         <button
                             type="submit"
                             class="inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-blue-500 rounded-lg"
                         >
-                            Sign in
+                            Signup
                         </button>
                     </div>
                 </form>
