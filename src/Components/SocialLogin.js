@@ -33,17 +33,43 @@ const SocialLogin = () => {
                 errorMessage
             }
 
-            <button onClick={() => signInWithGoogle()}
-                class="w-full inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-blue-500 rounded-lg"
-            >
-                Continue With Google
-            </button>
+            <div className="flex items-center justify-evenly">
+                <button onClick={() => signInWithGoogle()}
+                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                >
+                    Google
+                </button>
 
-            <button onClick={() => signInWithGithub()}
-                class="w-full inline-block px-5 py-3 ml-3 text-sm font-medium text-white bg-blue-500 rounded-lg"
-            >
-                Continue With Github
-            </button>
+                <button onClick={() => signInWithGithub()}
+                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                >
+                    Github
+                </button>
+
+                <button onClick={() => signInWithFacebook()}
+                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                >
+                    Github
+                </button>
+
+                <button onClick={() => signInWithMicrosoft()}
+                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                >
+                    Github
+                </button>
+
+                <button onClick={() => signInWithTwitter()}
+                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                >
+                    Github
+                </button>
+
+                <button onClick={() => signInWithYahoo()}
+                    class="text-sm font-medium text-white bg-blue-500 rounded-lg"
+                >
+                    Github
+                </button>
+            </div>
         </div>
     );
 };
