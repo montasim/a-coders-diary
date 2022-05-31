@@ -2,6 +2,7 @@ import React from 'react';
 import auth from '../Hooks/Firebase.Init';
 import { useSignInWithGoogle, useSignInWithFacebook, useSignInWithGithub, useSignInWithMicrosoft, useSignInWithTwitter, useSignInWithYahoo } from 'react-firebase-hooks/auth';
 import Loading from './Loading';
+import { toast } from 'react-toastify';
 
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -18,6 +19,10 @@ const SocialLogin = () => {
 
     if (googleLoading || facebookLoading || githubLoading || microsoftLoading || twitterLoading || yahooLoading) {
         return <Loading />;
+    };
+
+    if (googleUser) {
+        toast(`Welcome ${googleUser?.displayName || googleUser?.user?.email?.split('@')[0]}`);
     };
 
     return (
