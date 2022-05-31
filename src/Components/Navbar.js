@@ -64,8 +64,10 @@ const Navbar = () => {
             <div className='navbar-end lg:mr-8'>
                 {user ?
                     <div className="avatar dropdown dropdown-hover dropdown-end">
-                        <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
-                            <img src={user?.user?.photoURL || user?.photoURL || defaultUserImage} />
+                        <div className='flex flex-row justify-center items-center'>
+                            <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
+                                <img src={user?.user?.photoURL || user?.photoURL || defaultUserImage} alt={`${user?.displayName || user?.user?.email?.split('@')[0]}}`} />
+                            </div>
                         </div>
 
                         <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
