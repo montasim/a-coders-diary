@@ -1,40 +1,63 @@
 import React, { useState } from 'react';
+import auth from '../../Hooks/Firebase.Init';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const CreatePost = () => {
+    const [user, loading, error] = useAuthState(auth);
     const [postName, setPostName] = useState('');
-    const [postImage, setPostImage] = useState('');
-    const [postDescription, setPostDescription] = useState('');
+    const [postDescription, setPostDescription] = useState('Write your post description here');
     const [postTags, setPostTags] = useState('');
     const [postCategory, setPostCategory] = useState('');
-    const postAuthor = 'User';
+    const postAuthor = user?.user?.email || user?.email;
     const postDateTime = new Date();
 
-    const postData = { postName, postImage, postDescription, postTags, postCategory, postAuthor, postDateTime };
+    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
 
-    console.log(postData);
+    const createPost = event => {
+        event.preventDefault();
+
+        event.target.reset();
+    };
 
     return (
-        <div className='flex flex-col h-screen mx-8'>
-            <h3 className='text-3xl text-secondary text-center mt-20'>Create A Blog Post Here</h3>
-            <form className='m-auto'>
-                <input onChange={e => setPostName(e.target.value)} type="text" placeholder="Post Title" class="input input-secondary w-full max-w-xl" />
+        <form onSubmit={createPost} className='rounded-xl m-12'>
+            <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-bordered input-md w-full' placeholder='Write your post title here' required></input>
 
-                <input onChange={e => setPostImage(e.target.value)} type="text" placeholder="Post Image" class="input input-secondary w-full max-w-xl mt-4" />
+            <div className="flex flex-col lg:flex-row text-lg my-4">
+                <textarea className='w-full h-64 lg:h-96  bg-gray-800 text-white text-justify p-8' defaultValue={postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
 
-                <textarea onChange={e => setPostDescription(e.target.value)} class="textarea textarea-secondary w-full max-w-xl my-4" placeholder="Post Description"></textarea>
+                <div className="w-full h-64 lg:h-96 bg-slate-200 p-8 overflow-auto">
+                    <ReactMarkdown
+                        rehypePlugins={[rehypeRaw]}
+                        remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
+                        children={postDescription} />
+                </div>
+            </div>
 
-                <input onChange={e => setPostTags(e.target.value)} type="text" placeholder="Post Tags" class="input input-secondary w-full max-w-xl" />
-
-                <select onChange={e => setPostCategory(e.target.value)} class="select select-secondary w-full max-w-xl my-4">
+            <div className='flex flex-col lg:flex-row justify-between items-center'>
+                <select onBlur={e => setPostCategory(e.target.value)} class="select select-bordered w-64 mb-4 required">
+                    <option disabled selected>Choose post category</option>
                     <option>T-shirts</option>
                     <option>Mugs</option>
                 </select>
 
-                <br />
+                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-bordered input-md w-64' placeholder='Write your post tags here' required></input>
+            </div>
 
-                <button type='submit' class="btn btn-secondary text-white btn-xs sm:btn-sm md:btn-lg lg:btn-md">Create A Post</button>
-            </form>
-        </div>
+            <div className='flex justify-center items-center'>
+                <button type='submit'
+                    class="mt-8 px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg w-full lg:w-64"
+                >
+                    Create Post
+                </button>
+            </div>
+        </form>
     );
 };
 
