@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import Loading from '../../Components/Loading';
 import SocialLogin from '../../Components/SocialLogin';
 import auth from '../../Hooks/Firebase.Init';
+import { AiOutlineEye } from 'react-icons/ai';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
 
 const Login = () => {
     const [
@@ -42,7 +44,7 @@ const Login = () => {
                 <h1 class="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary sm:text-3xl">Get started today</h1>
 
                 <p class="max-w-md mx-auto mt-4 text-center text-gray-500">
-                    Find the best working solutions of your coding problem. Share your knowledge and help others.
+                    Find the best working solutions of your coding problem. Share your knowledge and help others. To get started, login.
                 </p>
 
                 <form onSubmit={login} class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl">
@@ -60,20 +62,7 @@ const Login = () => {
                             />
 
                             <span class="absolute inset-y-0 inline-flex items-center right-4">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 text-info"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                                    />
-                                </svg>
+                                <MdOutlineAlternateEmail />
                             </span>
                         </div>
                     </div>
@@ -90,26 +79,7 @@ const Login = () => {
                             />
 
                             <span class="absolute inset-y-0 inline-flex items-center right-4">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 text-info"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                    />
-                                </svg>
+                                <AiOutlineEye className='text-lg' />
                             </span>
                         </div>
                     </div>
