@@ -17,7 +17,7 @@ const Navbar = () => {
     };
 
     if (error) {
-
+        toast.error(`${error?.message?.slice(17, -2)}`);
     };
 
     const logout = () => {
