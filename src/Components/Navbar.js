@@ -25,7 +25,7 @@ const Navbar = () => {
     const logout = () => {
         signOut(auth);
 
-        toast(`See you soon ${user?.displayName || user?.user?.email?.split('@')[0]}`);
+        toast(`See you soon ${user?.displayName || user?.email?.split('@')[0] || user?.user?.email?.split('@')[0]}`);
     };
 
     const navbarMenu = <>
@@ -77,7 +77,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         :
-                        <Link to='/login' className='px-4 py-4 text-sm font-medium text-white bg-secondary hover:bg-primary rounded-lg flex justify-center'>
+                        <Link to='/login' className='lg:px-4 px-2 lg:py-4 py-2 text-sm font-medium text-white bg-secondary hover:bg-primary rounded-lg flex justify-center items-center'>
                             <RiUserShared2Fill className='lg:text-lg sm:text-sm mr-3' />
                             Login
                         </Link>
