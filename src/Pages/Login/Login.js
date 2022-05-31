@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Loading from '../../Components/Loading';
 import SocialLogin from '../../Components/SocialLogin';
 import auth from '../../Hooks/Firebase.Init';
@@ -26,7 +27,11 @@ const Login = () => {
     };
 
     if (error) {
-        errorMessage = <p>{error?.message}</p>
+        errorMessage = <p className='text-center text-red-500 text-lg'>{error?.message?.slice(17, -2)}</p>
+    };
+
+    if (user) {
+        toast.success(`Welcome ${user?.displayName || user?.email?.split('@')[0]}`);
     };
 
     return (

@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import About from "./Pages/About/About";
@@ -26,6 +28,7 @@ function App() {
         <Route path="reset-password" element={<ResetPassword />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
