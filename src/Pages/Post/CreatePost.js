@@ -27,6 +27,8 @@ const CreatePost = () => {
 
     return (
         <form onSubmit={createPost} className='rounded-xl m-12 text-info'>
+            <h2 className='mb-12 text-xl lg:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary'>Create a post here</h2>
+
             <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-primary input-md w-full' placeholder='Write your post title here' required></input>
 
             <div className="flex flex-col lg:flex-row text-lg my-4">
