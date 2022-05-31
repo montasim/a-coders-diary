@@ -50,9 +50,9 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <a className='btn btn-ghost normal-case text-xl'>
+                <Link to='/' className='btn btn-ghost normal-case text-xl'>
                     <h3 className='lg:text-2xl sm:text-xl uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold'>A Coders Diary</h3>
-                </a>
+                </Link>
             </div>
             <div className='navbar-center hidden lg:flex'>
                 <ul className='menu menu-horizontal p-0 text-primary bg-clip-text bg-gradient-to-r from-primary to-secondary uppercase font-medium'>
