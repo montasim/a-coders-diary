@@ -11,6 +11,7 @@ import CreatePost from "./Pages/Post/CreatePost";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Login/Signup";
 import ResetPassword from "./Pages/Login/ResetPassword";
+import CreateTag from "./Pages/Post/CreateTag";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<BlogPostDetails />} />
         <Route path="create-post" element={<CreatePost />} />
+        <Route path="create-tag" element={<CreateTag />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
