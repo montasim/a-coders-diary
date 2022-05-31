@@ -6,6 +6,7 @@ import { TiThMenu } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import auth from '../Hooks/Firebase.Init';
 import Loading from './Loading';
+import defaultUserImage from '../Assets/Images/defaultUser.png';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -57,8 +58,8 @@ const Navbar = () => {
             <div className='navbar-end lg:mr-8'>
                 {user ?
                     <div onClick={() => logout()} class="avatar">
-                        <div class="w-14 mask mask-hexagon">
-                            <img src="https://api.lorem.space/image/face?hash=55350" />
+                        <div class="lg:w-12 md:w-10 w-8 mask mask-hexagon">
+                            <img src={user?.user?.photoURL || defaultUserImage} />
                         </div>
                     </div> :
                     <Link to='/login' className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></Link>}
