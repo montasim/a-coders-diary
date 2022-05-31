@@ -3,7 +3,7 @@ import BlogPost from './BlogPost';
 
 const Home = () => {
     return (
-        <div>
+        <div className='my-12 lg:my-24'>
             <BlogPost />
         </div>
     );
