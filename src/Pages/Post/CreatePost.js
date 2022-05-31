@@ -1,39 +1,33 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 
 const CreatePost = () => {
     const [postName, setPostName] = useState('');
-    const [postImage, setPostImage] = useState('');
     const [postDescription, setPostDescription] = useState('');
     const [postTags, setPostTags] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const postAuthor = 'User';
     const postDateTime = new Date();
 
-    const postData = { postName, postImage, postDescription, postTags, postCategory, postAuthor, postDateTime };
+    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
 
     console.log(postData);
 
     return (
-        <div className='flex flex-col h-screen mx-8'>
-            <h3 className='text-3xl text-secondary text-center mt-20'>Create A Blog Post Here</h3>
-            <form className='m-auto'>
-                <input onChange={e => setPostName(e.target.value)} type="text" placeholder="Post Title" class="input input-secondary w-full max-w-xl" />
+        <div className="flex text-xl rounded-xl m-8">
+            <textarea className='w-full h-screen bg-gray-800 text-white text-justify p-8' defaultValue={postDescription} onChange={(e) => setPostDescription(e?.target?.value)}></textarea>
 
-                <input onChange={e => setPostImage(e.target.value)} type="text" placeholder="Post Image" class="input input-secondary w-full max-w-xl mt-4" />
-
-                <textarea onChange={e => setPostDescription(e.target.value)} class="textarea textarea-secondary w-full max-w-xl my-4" placeholder="Post Description"></textarea>
-
-                <input onChange={e => setPostTags(e.target.value)} type="text" placeholder="Post Tags" class="input input-secondary w-full max-w-xl" />
-
-                <select onChange={e => setPostCategory(e.target.value)} class="select select-secondary w-full max-w-xl my-4">
-                    <option>T-shirts</option>
-                    <option>Mugs</option>
-                </select>
-
-                <br />
-
-                <button type='submit' class="btn btn-secondary text-white btn-xs sm:btn-sm md:btn-lg lg:btn-md">Create A Post</button>
-            </form>
+            <div className="w-full h-screen bg-slate-200 p-8 overflow-auto">
+                <ReactMarkdown
+                    rehypePlugins={[rehypeRaw]}
+                    remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
+                    children={postDescription} />
+            </div>
         </div>
     );
 };
