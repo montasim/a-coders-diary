@@ -4,6 +4,7 @@ import SocialLogin from '../../Components/SocialLogin';
 import auth from '../../Hooks/Firebase.Init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Loading from '../../Components/Loading';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [
@@ -29,7 +30,11 @@ const Login = () => {
     };
 
     if (error) {
-        errorMessage = <p>{error?.message}</p>
+        errorMessage = <p className='text-center text-red-500 text-lg'>{error?.message?.slice(17, -2)}</p>
+    };
+
+    if (user) {
+        toast.success('Signup completed successfully. Verify your email to login');
     };
 
     return (
