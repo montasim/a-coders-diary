@@ -62,22 +62,28 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className='navbar-end lg:mr-8'>
-                {user ?
-                    <div className="avatar dropdown dropdown-hover dropdown-end">
-                        <div className='flex flex-row justify-center items-center'>
-                            <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
-                                <img src={user?.user?.photoURL || user?.photoURL || defaultUserImage} alt={`${user?.displayName || user?.user?.email?.split('@')[0]}}`} />
+                {
+                    user ?
+                        <div className="avatar dropdown dropdown-hover dropdown-end">
+                            <div className='flex flex-row justify-center items-center'>
+                                <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
+                                    <img src={user?.user?.photoURL || user?.photoURL || defaultUserImage} alt={`${user?.displayName || user?.user?.email?.split('@')[0]}}`} />
+                                </div>
                             </div>
-                        </div>
 
-                        <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
-                            <li><Link to='/profile'>Profile</Link></li>
-                            <li onClick={() => logout()}><Link to='/'>Logout</Link></li>
-                        </ul>
-                    </div> :
-                    <Link to='/login' className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></Link>}
+                            <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
+                                <li><Link to='/profile'>Profile</Link></li>
+                                <li onClick={() => logout()}><Link to='/'>Logout</Link></li>
+                            </ul>
+                        </div>
+                        :
+                        <Link to='/login' className='px-4 py-4 text-sm font-medium text-white bg-secondary hover:bg-primary rounded-lg flex justify-center'>
+                            <RiUserShared2Fill className='lg:text-lg sm:text-sm mr-3' />
+                            Login
+                        </Link>
+                }
             </div>
-        </div>
+        </div >
     );
 };
 
