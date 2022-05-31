@@ -44,7 +44,7 @@ const CreatePost = () => {
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
-                    <option disabled defaultValue>Choose post category</option>
+                    <option defaultValue>Choose post category</option>
                     <option>T-shirts</option>
                     <option>Mugs</option>
                 </select>
