@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin';
 import auth from '../../Hooks/Firebase.Init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Loading from '../../Components/Loading';
 
 const Login = () => {
     const [
@@ -23,9 +24,13 @@ const Login = () => {
         event.target.reset();
     };
 
+    if (loading) {
+        return <Loading />;
+    };
+
     if (error) {
         errorMessage = <p>{error?.message}</p>
-    }
+    };
 
     return (
         <section class="relative flex flex-wrap lg:h-screen lg:items-center my-20 h-screen">
