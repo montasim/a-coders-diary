@@ -7,6 +7,7 @@ import Loading from '../../Components/Loading';
 import { toast } from 'react-toastify';
 import { AiOutlineEye } from 'react-icons/ai';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
+import signupImage from '../../Assets/Images/signup.jpg';
 
 const Login = () => {
     const [
@@ -107,7 +108,7 @@ const Login = () => {
             <div class="relative w-full h-64 sm:h-96 lg:w-1/2 lg:h-full">
                 <img
                     class="absolute inset-0 object-cover w-full h-full"
-                    src="https://www.hyperui.dev/photos/team-1.jpeg"
+                    src={signupImage}
                     alt=""
                 />
             </div>
