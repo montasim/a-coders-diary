@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin';
 import auth from '../../Hooks/Firebase.Init';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import Loading from '../../Components/Loading';
 import { toast } from 'react-toastify';
 import { AiOutlineEye } from 'react-icons/ai';
@@ -16,28 +16,29 @@ const Login = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [sendEmailVerification, sending, emailVerificationError] = useSendEmailVerification(auth);
     const [email, setEmail] = useState('');
     const [passowrd, setPassword] = useState('');
     let errorMessage = '';
 
-    const createUser = event => {
+    const createUser = async (event) => {
         event.preventDefault();
 
         createUserWithEmailAndPassword(email, passowrd);
 
+        await sendEmailVerification(email);
+
+        toast.success(`Check your email to verify your account`);
+
         event.target.reset();
     };
 
-    if (loading) {
+    if (loading || sending) {
         return <Loading />;
     };
 
-    if (error) {
+    if (error || emailVerificationError) {
         errorMessage = <p className='text-center text-red-500 text-lg'>{error?.message?.slice(17, -2)}</p>
-    };
-
-    if (user) {
-        toast.success('Signup completed successfully. Verify your email to login');
     };
 
     return (
