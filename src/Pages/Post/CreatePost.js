@@ -26,11 +26,11 @@ const CreatePost = () => {
     };
 
     return (
-        <form onSubmit={createPost} className='rounded-xl m-12'>
-            <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-bordered input-md w-full' placeholder='Write your post title here' required></input>
+        <form onSubmit={createPost} className='rounded-xl m-12 text-info'>
+            <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-primary input-md w-full' placeholder='Write your post title here' required></input>
 
             <div className="flex flex-col lg:flex-row text-lg my-4">
-                <textarea className='w-full h-64 lg:h-96  bg-gray-800 text-white text-justify p-8' defaultValue={postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
+                <textarea className='w-full h-64 lg:h-96 bg-primary text-white text-justify p-8' defaultValue={postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
 
                 <div className="w-full h-64 lg:h-96 bg-slate-200 p-8 overflow-auto">
                     <ReactMarkdown
@@ -41,18 +41,18 @@ const CreatePost = () => {
             </div>
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
-                <select onBlur={e => setPostCategory(e.target.value)} class="select select-bordered w-64 mb-4 required">
+                <select onBlur={e => setPostCategory(e.target.value)} class="select select-primary w-64 mb-4 required">
                     <option disabled selected>Choose post category</option>
                     <option>T-shirts</option>
                     <option>Mugs</option>
                 </select>
 
-                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-bordered input-md w-64' placeholder='Write your post tags here' required></input>
+                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' placeholder='Write your post tags here' required></input>
             </div>
 
             <div className='flex justify-center items-center'>
                 <button type='submit'
-                    class="mt-8 px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg w-full lg:w-64"
+                    class="mt-8 px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
                 >
                     Create Post
                 </button>
