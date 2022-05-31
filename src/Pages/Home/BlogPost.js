@@ -4,7 +4,7 @@ import { FiClock } from 'react-icons/fi';
 
 const BlogPost = () => {
     return (
-        <article className="p-6 bg-white sm:p-8 rounded-xl ring ring-success lg:mx-10 sm:mx-2 my-6">
+        <article className="p-6 bg-white sm:p-8 rounded-xl ring ring-success lg:mx-10 mx-4 my-6">
             <div className="flex items-start">
                 <div
                     className="hidden sm:grid sm:h-20 sm:w-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-primary"
