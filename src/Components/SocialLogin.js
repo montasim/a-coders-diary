@@ -28,8 +28,8 @@ const SocialLogin = () => {
     };
 
     return (
-        <div class="max-w-md mx-auto mt-8 space-y-4">
-            <div class="divider">OR</div>
+        <div className="max-w-md mx-auto mt-8 space-y-4">
+            <div className="divider">OR</div>
 
             {
                 errorMessage
@@ -37,37 +37,37 @@ const SocialLogin = () => {
 
             <div className="flex items-center justify-evenly">
                 <button onClick={() => signInWithGoogle()}
-                    class="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
+                    className="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
                 >
                     <BsGoogle className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithGithub()}
-                    class="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
+                    className="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
                 >
                     <BsGithub className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithFacebook()}
-                    class="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
+                    className="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
                 >
                     <BsFacebook className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithMicrosoft()}
-                    class="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
+                    className="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
                 >
                     <BsMicrosoft className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithTwitter()}
-                    class="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
+                    className="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
                 >
                     <BsTwitter className='text-xl' />
                 </button>
 
                 <button onClick={() => signInWithYahoo()}
-                    class="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
+                    className="px-4 py-4 text-sm font-medium text-white bg-primary rounded-lg"
                 >
                     <FaYahoo className='text-xl' />
                 </button>

@@ -24,7 +24,7 @@ const CreateTag = () => {
 
             <div className='flex justify-center items-center'>
                 <button type='submit'
-                    class="mt-8 px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg w-full lg:w-64"
+                    className="mt-8 px-4 py-4 text-sm font-medium text-white bg-blue-500 rounded-lg w-full lg:w-64"
                 >
                     Create Tag
                 </button>

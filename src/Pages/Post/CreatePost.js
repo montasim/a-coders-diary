@@ -41,7 +41,7 @@ const CreatePost = () => {
             </div>
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
-                <select onBlur={e => setPostCategory(e.target.value)} class="select select-primary w-64 mb-4 required">
+                <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
                     <option disabled selected>Choose post category</option>
                     <option>T-shirts</option>
                     <option>Mugs</option>
@@ -52,7 +52,7 @@ const CreatePost = () => {
 
             <div className='flex justify-center items-center'>
                 <button type='submit'
-                    class="mt-8 px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
+                    className="mt-8 px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
                 >
                     Create Post
                 </button>

@@ -61,12 +61,12 @@ const Navbar = () => {
             </div>
             <div className='navbar-end lg:mr-8'>
                 {user ?
-                    <div class="avatar dropdown dropdown-hover dropdown-end">
-                        <div class="lg:w-12 md:w-10 w-8 mask mask-hexagon">
+                    <div className="avatar dropdown dropdown-hover dropdown-end">
+                        <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
                             <img src={user?.user?.photoURL || defaultUserImage} />
                         </div>
 
-                        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
+                        <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
                             <li><Link to='/profile'>Profile</Link></li>
                             <li onClick={() => logout()}><Link to='/'>Logout</Link></li>
                         </ul>
