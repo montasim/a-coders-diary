@@ -53,7 +53,7 @@ const Login = () => {
 
                 <form onSubmit={createUser} action="" className="max-w-md mx-auto mt-8 mb-0 space-y-4">
                     <div>
-                        <label for="email" className="sr-only">Email</label>
+                        <label htmlFor="email" className="sr-only">Email</label>
 
                         <div className="relative">
                             <input onBlur={(e) => setEmail(e.target.value)}
@@ -69,7 +69,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label for="password" className="sr-only">Password</label>
+                        <label htmlFor="password" className="sr-only">Password</label>
                         <div className="relative">
                             <input onBlur={(e) => setPassword(e.target.value)}
                                 type="password"
