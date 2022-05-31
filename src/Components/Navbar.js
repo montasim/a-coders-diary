@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import auth from '../Hooks/Firebase.Init';
 import Loading from './Loading';
 import defaultUserImage from '../Assets/Images/defaultUser.png';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -21,6 +22,8 @@ const Navbar = () => {
 
     const logout = () => {
         signOut(auth);
+
+        toast(`See you soon ${user?.displayName || user?.user?.email?.split('@')[0]}`);
     };
 
     const navbarMenu = <>
