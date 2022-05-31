@@ -13,8 +13,6 @@ const CreateTag = () => {
     const createTag = event => {
         event.preventDefault();
 
-        console.log(tagData);
-
         event.target.reset();
     };
 
