@@ -28,7 +28,9 @@ const Navbar = () => {
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
         <li><Link to='/about'>About</Link></li>
-        <li><Link to='/create-post'>Create Post</Link></li>
+        {
+            user && <li><Link to='/create-post'>Create Post</Link></li>
+        }
     </>;
 
     return (
