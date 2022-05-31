@@ -14,6 +14,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    let errorMessage = '';
 
     const login = event => {
         event.preventDefault();
@@ -22,6 +23,10 @@ const Login = () => {
 
     if (loading) {
         return <Loading />;
+    };
+
+    if (error) {
+        errorMessage = <p>{error?.message}</p>
     };
 
     return (
@@ -102,6 +107,10 @@ const Login = () => {
                             </span>
                         </div>
                     </div>
+
+                    {
+                        errorMessage
+                    }
 
                     <button type="submit" class="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg">
                         Login
