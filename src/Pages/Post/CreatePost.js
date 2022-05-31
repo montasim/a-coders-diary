@@ -20,7 +20,6 @@ const CreatePost = () => {
     const postAuthor = user?.user?.email || user?.email;
     const postDateTime = new Date();
     const navigate = useNavigate();
-    const [sendEmailVerification, sending, emailVerificationError] = useSendEmailVerification(auth);
     const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
 
     useEffect(() => {
@@ -29,11 +28,11 @@ const CreatePost = () => {
         };
     }, [user]);
 
-    if (loading || sending) {
+    if (loading) {
         return <Loading />;
     };
 
-    if (emailVerificationError || error) {
+    if (error) {
         toast.error(`${error?.message?.slice(17, -2)}`)
     };
 

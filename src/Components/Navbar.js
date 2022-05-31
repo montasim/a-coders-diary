@@ -67,7 +67,7 @@ const Navbar = () => {
                         <div className="avatar dropdown dropdown-hover dropdown-end">
                             <div className='flex flex-row justify-center items-center'>
                                 <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
-                                    <img src={user?.user?.photoURL || user?.photoURL || defaultUserImage} alt={`${user?.displayName || user?.user?.email?.split('@')[0]}}`} />
+                                    <img src={user?.photoURL || user?.user?.photoURL || defaultUserImage} alt={`${user?.displayName || user?.user?.email?.split('@')[0]}}`} />
                                 </div>
                             </div>
 
