@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { RiUserShared2Fill } from 'react-icons/ri';
@@ -15,6 +16,10 @@ const Navbar = () => {
 
     if (error) {
 
+    };
+
+    const logout = () => {
+        signOut(auth);
     };
 
     const navbarMenu = <>
@@ -50,11 +55,12 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className='navbar-end lg:mr-8'>
-                {user ? <div class="avatar">
-                    <div class="w-14 mask mask-hexagon">
-                        <img src="https://api.lorem.space/image/face?hash=55350" />
-                    </div>
-                </div> :
+                {user ?
+                    <div onClick={() => logout()} class="avatar">
+                        <div class="w-14 mask mask-hexagon">
+                            <img src="https://api.lorem.space/image/face?hash=55350" />
+                        </div>
+                    </div> :
                     <Link to='/login' className='btn btn-outline'><RiUserShared2Fill className='lg:text-lg sm:text-sm' /></Link>}
             </div>
         </div>
