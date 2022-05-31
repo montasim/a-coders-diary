@@ -13,6 +13,7 @@ import Signup from "./Pages/Login/Signup";
 import ResetPassword from "./Pages/Login/ResetPassword";
 import CreateTag from "./Pages/Post/CreateTag";
 import Profile from "./Pages/User/Profile";
+import VerifyEmail from "./Pages/Login/VerifyEmail";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
         <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="verify-email" element={<VerifyEmail />} />
       </Routes>
       <Footer />
       <ToastContainer />

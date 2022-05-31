@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import auth from '../../Hooks/Firebase.Init';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -6,7 +6,10 @@ import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import Loading from '../../Components/Loading';
+import { toast } from 'react-toastify';
 
 const CreatePost = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -16,8 +19,29 @@ const CreatePost = () => {
     const [postCategory, setPostCategory] = useState('');
     const postAuthor = user?.user?.email || user?.email;
     const postDateTime = new Date();
-
+    const navigate = useNavigate();
+    const [sendEmailVerification, sending, emailVerificationError] = useSendEmailVerification(auth);
     const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
+
+    useEffect(() => {
+        const verifyEmail = async () => {
+            await sendEmailVerification(user?.email);
+        };
+
+        if (user?.emailVerified === false) {
+            navigate('/verify-email');
+
+            verifyEmail();
+        };
+    }, [user]);
+
+    if (loading || sending) {
+        return <Loading />;
+    };
+
+    if (emailVerificationError || error) {
+        toast.error(`${error?.message?.slice(17, -2)}`)
+    };
 
     const createPost = event => {
         event.preventDefault();
