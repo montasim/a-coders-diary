@@ -49,6 +49,8 @@ const CreatePost = () => {
             progress: undefined,
         });
 
+        setPostDescription('Write your post description here');
+
         event.target.reset();
     };
 
