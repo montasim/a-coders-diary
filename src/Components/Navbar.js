@@ -65,11 +65,15 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="avatar dropdown dropdown-hover dropdown-end">
-                            <div className='flex flex-row justify-center items-center'>
+                            <strong class="inline-flex items-center px-5 py-1.5 rounded-full">
+                                <span class="text-md font-medium mr-2">
+                                    {user?.email?.split('@')[0]}
+                                </span>
+
                                 <div className="lg:w-12 md:w-10 w-8 mask mask-hexagon">
                                     <img src={user?.photoURL || user?.user?.photoURL || defaultUserImage} alt={`${user?.displayName || user?.user?.email?.split('@')[0]}}`} />
                                 </div>
-                            </div>
+                            </strong>
 
                             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
                                 <li><Link to='/profile'>Profile</Link></li>
