@@ -10,6 +10,10 @@ import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/aut
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../Components/Loading';
 import { toast } from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { GiConfirmed } from 'react-icons/gi';
+import { ImCancelCircle } from 'react-icons/im';
 
 const CreatePost = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -36,9 +40,34 @@ const CreatePost = () => {
         toast.error(`${error?.message?.slice(17, -2)}`)
     };
 
-    const createPost = event => {
+    const postConfirmation = event => {
         event.preventDefault();
 
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='bg-gradient-to-r from-primary to-secondary p-8 text-white rounded-lg w-96'>
+                        <h1 className='text-xl mb-4'>Are you sure?</h1>
+                        <p>Your post will be public so be careful before proceed.</p>
+
+                        <div className='flex justify-between mt-8'>
+                            <button className='btn btn-info w-36 flex items-center' onClick={onClose}>
+                                <ImCancelCircle className='text-2xl mr-4' />
+                                Cancel
+                            </button>
+
+                            <button className='btn btn-info w-36 flex items-center' onClick={createPost}>
+                                <GiConfirmed className='text-2xl mr-4' />
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+        });
+    };
+
+    const createPost = event => {
         toast.success('Post created successfully', {
             position: "top-center",
             autoClose: 5000,
@@ -55,7 +84,7 @@ const CreatePost = () => {
     };
 
     return (
-        <form onSubmit={createPost} className='rounded-xl m-12 text-info'>
+        <form onSubmit={postConfirmation} className='rounded-xl m-12 text-info'>
             <h2 className='mb-12 text-xl lg:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary'>Create a post here</h2>
 
             <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-primary input-md w-full' placeholder='Write your post title here' required></input>
