@@ -65,8 +65,8 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="avatar dropdown dropdown-hover dropdown-end">
-                            <strong class="inline-flex items-center px-5 py-1.5 rounded-full">
-                                <span class="text-md font-medium mr-2">
+                            <strong className="inline-flex items-center px-5 py-1.5 rounded-full">
+                                <span className="text-md font-medium mr-2">
                                     {user?.email?.split('@')[0]}
                                 </span>
 
