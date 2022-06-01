@@ -39,6 +39,16 @@ const CreatePost = () => {
     const createPost = event => {
         event.preventDefault();
 
+        toast.success('Post created successfully', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+
         event.target.reset();
     };
 

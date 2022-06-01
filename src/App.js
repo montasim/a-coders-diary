@@ -33,7 +33,18 @@ function App() {
         <Route path="verify-email" element={<VerifyEmail />} />
       </Routes>
       <Footer />
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        theme="dark"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
