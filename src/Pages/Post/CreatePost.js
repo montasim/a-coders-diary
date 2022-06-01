@@ -68,7 +68,7 @@ const CreatePost = () => {
     };
 
     const createPost = event => {
-        toast.success('Post created successfully', {
+        toast.success(`Post ${postName} created successfully`, {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
