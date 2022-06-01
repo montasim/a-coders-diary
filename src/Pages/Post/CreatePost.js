@@ -68,17 +68,40 @@ const CreatePost = () => {
     };
 
     const createPost = event => {
-        toast.success(`Post ${postName} created successfully`, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-
         setPostDescription('Write your post description here');
+
+        fetch('http://localhost:5000/create-post', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.insertedId) {
+                    toast.success(`Post ${postName} created successfully`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
 
         event.target.reset();
     };
