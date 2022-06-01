@@ -1,10 +1,10 @@
 import React from 'react';
-import BlogPost from './BlogPost';
+import BlogPosts from './BlogPosts';
 
 const Home = () => {
     return (
         <div className='my-12 lg:my-24'>
-            <BlogPost />
+            <BlogPosts />
         </div>
     );
 };

@@ -2,7 +2,9 @@ import React from 'react';
 import { FaUserEdit } from 'react-icons/fa';
 import { FiClock } from 'react-icons/fi';
 
-const BlogPost = () => {
+const BlogPost = ({ post }) => {
+    const { postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = post;
+
     return (
         <article className="p-6 bg-white sm:p-8 rounded-xl ring ring-success lg:mx-10 mx-4 my-6">
             <div className="flex items-start">
@@ -23,32 +25,27 @@ const BlogPost = () => {
                     <strong
                         className="rounded bg-gradient-to-r from-primary to-secondary px-3 py-1.5 text-[10px] font-medium text-white"
                     >
-                        JavaScript
+                        {postCategory}
                     </strong>
 
                     <h2 className="mt-4 text-lg font-medium sm:text-xl">
-                        <a href="" className="hover:underline"> Some Interesting Title </a>
+                        <a href="" className="hover:underline"> {postName} </a>
                     </h2>
 
                     <p className="mt-1 text-sm text-info">
-                        Description - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla
-                        amet voluptatum sit rerum, atque, quo culpa ut necessitatibus eius
-                        suscipit eum accusamus, aperiam voluptas exercitationem facere aliquid
-                        fuga. Sint.
+                        {postDescription}
                     </p>
 
                     <div className="mt-4 sm:flex sm:items-center sm:gap-2">
                         <div className="flex items-center text-gray-500">
                             <FiClock />
-                            <p className="ml-1 text-xs font-medium">Post Time - Date - Time</p>
+                            <p className="ml-1 text-xs font-medium">Posted on - {postDateTime?.slice(0, 10)}</p>
                         </div>
 
-                        <span className="hidden sm:block" aria-hidden="true">&middot;</span>
+                        <span className="h-3 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
 
                         <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                            Tags: <a href="" className="hover:text-info">JavaScript, </a>
-
-                            <a href="" className="hover:text-info">NodeJS</a>
+                            Tags: {postTags}
                         </p>
                     </div>
                 </div>
@@ -59,7 +56,7 @@ const BlogPost = () => {
                 >
                     <FaUserEdit className='mr-2' />
 
-                    <span className="text-[10px] font-medium sm:text-xs">Posted By - Name</span>
+                    <span className="text-[10px] font-medium sm:text-xs">Posted By - {postAuthor}</span>
                 </strong>
             </div>
         </article>
