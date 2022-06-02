@@ -24,7 +24,7 @@ const Posts = () => {
                     </thead>
                     <tbody>
                         {
-                            posts.map((post, index) => <Post key={index} post={post} />)
+                            posts?.map((post, index) => <Post key={index} post={post} />)
                         }
                     </tbody>
                     <tfoot>
