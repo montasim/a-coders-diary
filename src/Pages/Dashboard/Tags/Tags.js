@@ -5,7 +5,7 @@ const Tags = () => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('http://localhost:5000/tags')
             .then(res => res.json())
             .then(data => setTags(data));
     }, [tags]);
@@ -24,7 +24,7 @@ const Tags = () => {
                     </thead>
                     <tbody>
                         {
-                            tags.map((tag, index) => <Tag key={index} post={tag} />)
+                            tags.map((tag, index) => <Tag key={index} tag={tag} index={index} />)
                         }
                     </tbody>
                     <tfoot>

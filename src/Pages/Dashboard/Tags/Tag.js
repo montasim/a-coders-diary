@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Tag = ({ post: tag }) => {
+const Tag = ({ tag, index }) => {
     const { _id, tagName, tagAuthor, tagAuthorImg, tagDateTime } = tag;
 
     return (
@@ -11,7 +11,7 @@ const Tag = ({ post: tag }) => {
                                     <input type="checkbox" class="checkbox" />
                                 </label>
                             </th> */}
-            <th>1</th>
+            <th>{index + 1}</th>
             <td>
                 <div class="flex items-center space-x-3">
                     <div class="avatar">

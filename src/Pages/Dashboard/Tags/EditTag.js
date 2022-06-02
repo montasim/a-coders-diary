@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import auth from '../../../Hooks/Firebase.Init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
@@ -6,14 +6,23 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { GiConfirmed } from 'react-icons/gi';
 import { ImCancelCircle } from 'react-icons/im';
+import { useParams } from 'react-router-dom';
 
 const EditTag = () => {
     const [user, loading, error] = useAuthState(auth);
     const [tagName, setTagName] = useState('');
     const tagAuthor = user?.user?.email || user?.email;
     const tagDateTime = new Date();
+    const [oldTagData, setOldTagData] = useState([]);
+    const { _id } = useParams();
 
-    const tagData = { tagName, postAuthor: tagAuthor, tagDateTime };
+    useEffect(() => {
+        fetch(`http://localhost:5000/tags/${_id}`)
+            .then(res => res.json())
+            .then(data => setOldTagData(data));
+    }, []);
+
+    const tagData = { tagName, tagAuthor, tagDateTime };
 
     const postConfirmation = event => {
         event.preventDefault();
@@ -60,7 +69,7 @@ const EditTag = () => {
         <form onSubmit={postConfirmation} className='rounded-xl m-12'>
             <h2 className='mb-12 text-xl lg:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary'>Edit tag { }</h2>
 
-            <input onBlur={e => setTagName(e.target.value)} type='text' className='input input-bordered input-md w-full' placeholder='Write tag name here' required></input>
+            <input onBlur={e => setTagName(e.target.value)} type='text' className='input input-bordered input-md w-full' defaultValue={oldTagData} required></input>
 
             <div className='flex justify-center items-center'>
                 <button type='submit'
