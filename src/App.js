@@ -17,7 +17,7 @@ import AddPost from "./Pages/Dashboard/Posts/AddPost";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import DashboardSummary from "./Pages/Dashboard/DashboardSummary";
 import Admins from "./Pages/Dashboard/Admins/Admins";
-import CreateAdmin from "./Pages/Dashboard/Admins/CreateAdmin";
+import CreateAdmins from "./Pages/Dashboard/Admins/CreateAdmins";
 import Users from "./Pages/Dashboard/Users/Users";
 import Tags from "./Pages/Dashboard/Tags/Tags";
 import Posts from "./Pages/Dashboard/Posts/Posts";
@@ -44,7 +44,7 @@ function App() {
           <Route path="add-tag" element={<AddTag />} />
           <Route path="users" element={<Users />} />
           <Route path="admins" element={<Admins />} />
-          <Route path="create-admin" element={<CreateAdmin />} />
+          <Route path="create-admin" element={<CreateAdmins />} />
         </Route>
 
         <Route path="about" element={<About />} />
