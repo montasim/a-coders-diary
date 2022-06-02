@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import BlogPost from './BlogPost';
+import Post from './Post';
 
-const BlogPosts = () => {
+const Posts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -15,10 +15,10 @@ const BlogPosts = () => {
     return (
         <section>
             {
-                posts.map((post, index) => <BlogPost key={index} post={post} />)
+                posts.map((post, index) => <Post key={index} post={post} />)
             }
         </section>
     );
 };
 
-export default BlogPosts;
+export default Posts;

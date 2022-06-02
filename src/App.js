@@ -22,6 +22,7 @@ import Users from "./Pages/Dashboard/Users/Users";
 import Tags from "./Pages/Dashboard/Tags/Tags";
 import Posts from "./Pages/Dashboard/Posts/Posts";
 import MyPosts from "./Pages/Dashboard/Posts/MyPosts";
+import EditPost from "./Pages/Dashboard/Posts/EditPost";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="my-posts" element={<MyPosts />} />
           <Route path="add-post" element={<AddPost />} />
           <Route path="posts" element={<Posts />} />
+          <Route path="posts/:_id" element={<EditPost />} />
           <Route path="tags" element={<Tags />} />
           <Route path="add-tag" element={<AddTag />} />
           <Route path="users" element={<Users />} />

@@ -8,7 +8,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 
-const BlogPost = ({ post }) => {
+const Post = ({ post }) => {
     const { postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = post;
 
     return (
@@ -72,4 +72,4 @@ const BlogPost = ({ post }) => {
     );
 };
 
-export default BlogPost;
+export default Post;
