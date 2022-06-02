@@ -16,6 +16,8 @@ const EditTag = () => {
     const [oldTagData, setOldTagData] = useState([]);
     const { _id } = useParams();
 
+    console.log(_id)
+
     useEffect(() => {
         fetch(`http://localhost:5000/tags/${_id}`)
             .then(res => res.json())
@@ -69,7 +71,7 @@ const EditTag = () => {
         <form onSubmit={postConfirmation} className='rounded-xl m-12'>
             <h2 className='mb-12 text-xl lg:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary'>Edit tag { }</h2>
 
-            <input onBlur={e => setTagName(e.target.value)} type='text' className='input input-bordered input-md w-full' defaultValue={oldTagData} required></input>
+            <input onBlur={e => setTagName(e.target.value)} type='text' className='input input-bordered input-md w-full' defaultValue={oldTagData?.tagName} required></input>
 
             <div className='flex justify-center items-center'>
                 <button type='submit'
