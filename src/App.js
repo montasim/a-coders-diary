@@ -12,9 +12,16 @@ import Signup from "./Pages/Login/Signup";
 import ResetPassword from "./Pages/Login/ResetPassword";
 import Profile from "./Pages/User/Profile";
 import VerifyEmail from "./Pages/Login/VerifyEmail";
-import CreateTag from "./Pages/Dashboard/Tags/CreateTag";
-import CreatePost from "./Pages/Dashboard/Posts/CreatePost";
+import AddTag from "./Pages/Dashboard/Tags/AddTag";
+import AddPost from "./Pages/Dashboard/Posts/AddPost";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import DashboardSummary from "./Pages/Dashboard/DashboardSummary";
+import Admins from "./Pages/Dashboard/Admins/Admins";
+import CreateAdmin from "./Pages/Dashboard/Admins/CreateAdmin";
+import Users from "./Pages/Dashboard/Users/Users";
+import Tags from "./Pages/Dashboard/Tags/Tags";
+import Posts from "./Pages/Dashboard/Posts/Posts";
+import MyPosts from "./Pages/Dashboard/Posts/MyPosts";
 
 function App() {
   return (
@@ -23,8 +30,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<BlogPostDetails />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="create-tag" element={<CreateTag />} />
+
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<DashboardSummary />} />
+          <Route path="my-posts" element={<MyPosts />} />
+          <Route path="add-post" element={<AddPost />} />
+          <Route path="posts" element={<Posts />} />
+          <Route path="tags" element={<Tags />} />
+          <Route path="add-tag" element={<AddTag />} />
+          <Route path="users" element={<Users />} />
+          <Route path="admins" element={<Admins />} />
+          <Route path="create-admin" element={<CreateAdmin />} />
+        </Route>
+
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AllUsers = () => {
+const Posts = () => {
     return (
         <div>
-            <h2>All Users</h2>
+            <h2>All Posts</h2>
         </div>
     );
 };
 
-export default AllUsers;
+export default Posts;

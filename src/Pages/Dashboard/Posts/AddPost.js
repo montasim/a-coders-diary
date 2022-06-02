@@ -15,7 +15,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { GiConfirmed } from 'react-icons/gi';
 import { ImCancelCircle } from 'react-icons/im';
 
-const CreatePost = () => {
+const AddPost = () => {
     const [user, loading, error] = useAuthState(auth);
     const [postName, setPostName] = useState('');
     const [postDescription, setPostDescription] = useState('Write your post description here');
@@ -144,4 +144,4 @@ const CreatePost = () => {
     );
 };
 
-export default CreatePost;
+export default AddPost;

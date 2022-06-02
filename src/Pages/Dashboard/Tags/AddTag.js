@@ -7,7 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { GiConfirmed } from 'react-icons/gi';
 import { ImCancelCircle } from 'react-icons/im';
 
-const CreateTag = () => {
+const AddTag = () => {
     const [user, loading, error] = useAuthState(auth);
     const [tagName, setTagName] = useState('');
     const tagAuthor = user?.user?.email || user?.email;
@@ -73,4 +73,4 @@ const CreateTag = () => {
     );
 };
 
-export default CreateTag;
+export default AddTag;
