@@ -11,9 +11,10 @@ const AddTag = () => {
     const [user, loading, error] = useAuthState(auth);
     const [tagName, setTagName] = useState('');
     const tagAuthor = user?.user?.email || user?.email;
+    const tagAuthorImg = user?.photoURL || user?.user?.photoURL;
     const tagDateTime = new Date();
 
-    const tagData = { tagName, postAuthor: tagAuthor, tagDateTime };
+    const tagData = { tagName, tagAuthor, tagAuthorImg, tagDateTime };
 
     const postConfirmation = event => {
         event.preventDefault();
@@ -43,15 +44,39 @@ const AddTag = () => {
     };
 
     const createTag = event => {
-        toast.success(`Tag ${tagName} created successfully`, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        fetch('http://localhost:5000/add-tag', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tagData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.insertedId) {
+                    toast.success(`Post ${tagName} created successfully`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+
 
         event.target.reset();
     };

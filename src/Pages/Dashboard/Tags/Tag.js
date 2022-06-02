@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Tag = ({ post: tag }) => {
-    const { _id, tagName, tagAuthor, tagDateTime } = tag;
+    const { _id, tagName, tagAuthor, tagAuthorImg, tagDateTime } = tag;
 
     return (
         <tr>
@@ -16,7 +16,7 @@ const Tag = ({ post: tag }) => {
                 <div class="flex items-center space-x-3">
                     <div class="avatar">
                         <div class="mask mask-squircle w-12 h-12">
-                            <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                            <img src={tagAuthorImg} alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div className='w-74'>
