@@ -1,6 +1,12 @@
 import React from 'react';
 import { FaUserEdit } from 'react-icons/fa';
 import { FiClock } from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 
 const BlogPost = ({ post }) => {
     const { postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = post;
@@ -33,7 +39,10 @@ const BlogPost = ({ post }) => {
                     </h2>
 
                     <p className="mt-1 text-sm text-info">
-                        {postDescription}
+                        <ReactMarkdown
+                            rehypePlugins={[rehypeRaw]}
+                            remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
+                            children={postDescription?.slice(0, 215) + '...'} />
                     </p>
 
                     <div className="mt-4 sm:flex sm:items-center sm:gap-2">
@@ -56,7 +65,7 @@ const BlogPost = ({ post }) => {
                 >
                     <FaUserEdit className='mr-2' />
 
-                    <span className="text-[10px] font-medium sm:text-xs">Posted By - {postAuthor}</span>
+                    <span className="text-[10px] font-medium sm:text-xs">Posted By - {postAuthor?.split('@')[0]}</span>
                 </strong>
             </div>
         </article>
