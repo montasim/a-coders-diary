@@ -65,7 +65,7 @@ const BlogPost = ({ post }) => {
                 >
                     <FaUserEdit className='mr-2' />
 
-                    <span className="text-[10px] font-medium sm:text-xs">Posted By - {postAuthor?.split('@')[0]}</span>
+                    <span className="text-[10px] font-medium sm:text-xs">Author - {postAuthor?.split('@')[0]}</span>
                 </strong>
             </div>
         </article>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import auth from '../../Hooks/Firebase.Init';
+import auth from '../../../Hooks/Firebase.Init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
@@ -13,7 +13,7 @@ const CreateTag = () => {
     const tagAuthor = user?.user?.email || user?.email;
     const tagDateTime = new Date();
 
-    const tagData = { tagName, postAuthor: tagAuthor, postDateTime: tagDateTime };
+    const tagData = { tagName, postAuthor: tagAuthor, tagDateTime };
 
     const postConfirmation = event => {
         event.preventDefault();

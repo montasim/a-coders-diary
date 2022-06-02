@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import auth from '../../Hooks/Firebase.Init';
+import auth from '../../../Hooks/Firebase.Init';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -8,7 +8,7 @@ import rehypeKatex from 'rehype-katex';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../Components/Loading';
+import Loading from '../../../Components/Loading';
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
