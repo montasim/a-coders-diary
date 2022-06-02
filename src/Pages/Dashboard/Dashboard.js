@@ -12,6 +12,7 @@ const Dashboard = () => {
             <div class="drawer-side shadow-lg">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-60 text-info text-sm uppercase font-medium">
+                    <li><Link to='/dashboard'>Summary</Link></li>
                     <li><Link to='/dashboard/my-posts'>My Posts</Link></li>
                     <li><Link to='/dashboard/add-post'>Add Post</Link></li>
                     <li><Link to='/dashboard/posts'>Posts</Link></li>
