@@ -7,7 +7,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../../Components/Loading';
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
@@ -24,7 +24,17 @@ const EditPost = () => {
     const postAuthor = user?.user?.email || user?.email;
     const postDateTime = new Date();
     const navigate = useNavigate();
+    const { _id } = useParams();
     const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
+    const [oldPostData, setOldPostData] = useState([]);
+
+    console.log(_id)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/posts/${_id}`)
+            .then(res => res.json())
+            .then(data => setOldPostData(data));
+    }, []);
 
     useEffect(() => {
         if (user?.emailVerified === false) {
@@ -110,10 +120,10 @@ const EditPost = () => {
         <form onSubmit={postConfirmation} className='rounded-xl m-12 text-info'>
             <h2 className='mb-12 text-xl lg:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary'>Create a post here</h2>
 
-            <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-primary input-md w-full' placeholder='Write your post title here' required></input>
+            <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-primary input-md w-full' defaultValue={oldPostData?.postName} required></input>
 
             <div className="flex flex-col lg:flex-row text-lg my-4">
-                <textarea className='w-full h-64 lg:h-96 bg-primary text-white text-justify p-8' defaultValue={postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
+                <textarea className='w-full h-64 lg:h-96 bg-primary text-white text-justify p-8' defaultValue={oldPostData?.postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
 
                 <div className="w-full h-64 lg:h-96 bg-slate-200 p-8 overflow-auto">
                     <ReactMarkdown
@@ -125,12 +135,12 @@ const EditPost = () => {
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
-                    <option defaultValue>Choose post category</option>
+                    <option defaultValue={oldPostData?.postCategory} disabled>Choose post category</option>
                     <option>T-shirts</option>
                     <option>Mugs</option>
                 </select>
 
-                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' placeholder='Write your post tags here' required></input>
+                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' defaultValue={oldPostData?.postTags} required></input>
             </div>
 
             <div className='flex justify-center items-center'>
