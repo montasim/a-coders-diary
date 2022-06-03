@@ -23,8 +23,9 @@ const Posts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            posts?.map((post, index) => <Post key={index} post={post} />)
+                        {posts?.length === 0 ?
+                            <p class="text-center text-info text-xl my-20">Sorry! No post to display.</p>
+                            : posts?.map((post, index) => <Post key={index} post={post} />)
                         }
                     </tbody>
                     <tfoot>
