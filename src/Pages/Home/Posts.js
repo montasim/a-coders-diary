@@ -10,12 +10,20 @@ const Posts = () => {
             .then(data => setPosts(data));
     }, []);
 
+
+    console.log(posts.length);
     return (
         <section>
             {
-                posts.map((post, index) => <Post key={index} post={post} />)
+                posts?.length === 0 ?
+                    <div class="card w-96 bg-base-100 shadow-xl mx-auto">
+                        <div class="card-body text-center text-info text-xl">
+                            <p>Sorry! No post to display.</p>
+                        </div>
+                    </div>
+                    : posts.map((post, index) => <Post key={index} post={post} />)
             }
-        </section>
+        </section >
     );
 };
 
