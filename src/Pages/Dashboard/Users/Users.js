@@ -23,8 +23,9 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            users?.map((user, index) => <User key={index} user={user} index={index} />)
+                        {users?.length === 0 ?
+                            <p class="text-center text-info text-xl my-20">Sorry! No user to display.</p>
+                            : users?.map((user, index) => <User key={index} user={user} index={index} />)
                         }
                     </tbody>
                     <tfoot>
