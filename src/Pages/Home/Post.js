@@ -7,9 +7,10 @@ import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
+import { Link } from 'react-router-dom';
 
 const Post = ({ post }) => {
-    const { postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = post;
+    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = post;
 
     return (
         <article className="p-6 bg-white sm:p-8 rounded-xl ring ring-success lg:mx-10 mx-4 my-6">
@@ -35,7 +36,7 @@ const Post = ({ post }) => {
                     </strong>
 
                     <h2 className="mt-4 text-lg font-medium sm:text-xl">
-                        <a href="" className="hover:underline"> {postName} </a>
+                        <Link to={`/post-details/${_id}`} className="hover:underline"> {postName} </Link>
                     </h2>
 
                     <div className="mt-1 text-sm text-info">

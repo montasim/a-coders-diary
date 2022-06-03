@@ -31,7 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<BlogPostDetails />} />
+        <Route path="post-details/:_id" element={<BlogPostDetails />} />
 
         <Route path="dashboard" element={<Dashboard />}>
           <Route index element={<DashboardSummary />} />

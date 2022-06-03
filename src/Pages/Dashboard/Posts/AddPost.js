@@ -22,8 +22,9 @@ const AddPost = () => {
     const [postTags, setPostTags] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const postAuthor = user?.user?.email || user?.email;
+    const postAuthorImg = user?.photoURL || user?.user?.photoURL;
     const postDateTime = new Date();
-    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
+    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime };
 
     if (loading) {
         return <Loading />;
