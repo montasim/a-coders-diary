@@ -17,8 +17,6 @@ const Contact = () => {
         toast.success('Thank you for your suggestions');
 
         event.target.reset();
-
-        console.log(suggestionsData);
     };
 
     return (

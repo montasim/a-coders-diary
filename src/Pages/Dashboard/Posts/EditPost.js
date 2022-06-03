@@ -28,10 +28,8 @@ const EditPost = () => {
     const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
     const [oldPostData, setOldPostData] = useState([]);
 
-    console.log(_id)
-
     useEffect(() => {
-        fetch(`http://localhost:5000/posts/${_id}`)
+        fetch(`http://localhost:5000/edit-post/${_id}`)
             .then(res => res.json())
             .then(data => setOldPostData(data));
     }, []);

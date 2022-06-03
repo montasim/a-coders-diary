@@ -1,8 +1,69 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { GiConfirmed } from 'react-icons/gi';
+import { ImCancelCircle } from 'react-icons/im';
 
 const Tag = ({ tag, index }) => {
     const { _id, tagName, tagAuthor, tagAuthorImg, tagDateTime } = tag;
+
+    const deleteConfirmation = (_id) => {
+
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='bg-gradient-to-r from-primary to-secondary p-8 text-white rounded-lg w-96'>
+                        <h1 className='text-xl mb-4'>Are you sure?</h1>
+                        <p>Your tag will be public so be careful before proceed.</p>
+
+                        <div className='flex justify-between mt-8'>
+                            <button className='btn btn-info w-36 flex items-center' onClick={onClose}>
+                                <ImCancelCircle className='text-2xl mr-4' />
+                                Cancel
+                            </button>
+
+                            <button className='btn btn-info w-36 flex items-center' onClick={() => deleteTag(_id)}>
+                                <GiConfirmed className='text-2xl mr-4' />
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+        });
+    };
+
+    const deleteTag = (_id) => {
+        fetch(`http://localhost:5000/delete-tag/${_id}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.deletedCount === 1) {
+                    toast?.success(`Post ${tagName} deleted successfully`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+    };
 
     return (
         <tr>
@@ -32,7 +93,7 @@ const Tag = ({ tag, index }) => {
             </td>
             <td>
                 <div class="flex items-center">
-                    <Link to={`/dashboard/tags/${_id}`}
+                    <Link to={`/dashboard/edit-tag/${_id}`}
                         class="z-20 block p-2 text-blue-700 transition-all bg-blue-100 border-2 border-white rounded-full active:bg-blue-50 hover:scale-110 focus:outline-none focus:ring"
                         type="button"
                     >
@@ -41,7 +102,7 @@ const Tag = ({ tag, index }) => {
                         </svg>
                     </Link>
 
-                    <button
+                    <button onClick={() => deleteConfirmation(_id)}
                         class="z-30 block p-2 text-red-700 transition-all bg-red-100 border-2 border-white rounded-full hover:scale-110 focus:outline-none focus:ring active:bg-red-50"
                         type="button"
                     >

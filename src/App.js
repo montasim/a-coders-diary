@@ -38,9 +38,10 @@ function App() {
           <Route path="my-posts" element={<MyPosts />} />
           <Route path="add-post" element={<AddPost />} />
           <Route path="posts" element={<Posts />} />
-          <Route path="posts/:_id" element={<EditPost />} />
+          <Route path="edit-post/:_id" element={<EditPost />} />
           <Route path="tags" element={<Tags />} />
-          <Route path="tags/:_id" element={<EditTag />} />
+          <Route path="delete-tag" element={<Tags />} />
+          <Route path="edit-tag/:_id" element={<EditTag />} />
           <Route path="add-tag" element={<AddTag />} />
           <Route path="users" element={<Users />} />
           <Route path="admins" element={<Admins />} />

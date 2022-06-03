@@ -12,8 +12,6 @@ import { toast } from 'react-toastify';
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
 
-    console.log(user);
-
     if (loading) {
         return <Loading />;
     };

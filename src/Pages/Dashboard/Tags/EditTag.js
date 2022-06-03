@@ -16,10 +16,8 @@ const EditTag = () => {
     const [oldTagData, setOldTagData] = useState([]);
     const { _id } = useParams();
 
-    console.log(_id)
-
     useEffect(() => {
-        fetch(`http://localhost:5000/tags/${_id}`)
+        fetch(`http://localhost:5000/edit-tag/${_id}`)
             .then(res => res.json())
             .then(data => setOldTagData(data));
     }, []);

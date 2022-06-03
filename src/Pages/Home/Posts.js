@@ -10,8 +10,6 @@ const Posts = () => {
             .then(data => setPosts(data));
     }, []);
 
-    console.log("posts", posts);
-
     return (
         <section>
             {
