@@ -6,7 +6,7 @@ import { ImCancelCircle } from 'react-icons/im';
 import { toast } from 'react-toastify';
 
 const MyPost = ({ myPost }) => {
-    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = myPost;
+    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime } = myPost;
 
     const deleteConfirmation = (_id) => {
 
@@ -77,13 +77,14 @@ const MyPost = ({ myPost }) => {
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                            <img src={postAuthorImg} alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div className='w-74'>
                         <h3 className="font-bold">{postName?.slice(0, 32) + '...'}</h3>
                         <p className="text-sm opacity-50">{postDescription?.length > 60 ? postDescription?.slice(0, 60) : postDescription}</p>
-                        <span className="badge badge-ghost badge-sm">{postTags}</span>
+                        <p className='text-sm opacity-80'>Category: {postCategory}</p>
+                        <p className='text-xs'>Tags: <span className="badge badge-ghost badge-sm">{postTags}</span></p>
                     </div>
                 </div>
             </td>
