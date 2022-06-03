@@ -38,12 +38,12 @@ const Post = ({ post }) => {
                         <a href="" className="hover:underline"> {postName} </a>
                     </h2>
 
-                    <p className="mt-1 text-sm text-info">
+                    <div className="mt-1 text-sm text-info">
                         <ReactMarkdown
                             rehypePlugins={[rehypeRaw]}
                             remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
                             children={postDescription?.slice(0, 215) + '...'} />
-                    </p>
+                    </div>
 
                     <div className="mt-4 sm:flex sm:items-center sm:gap-2">
                         <div className="flex items-center text-gray-500">
