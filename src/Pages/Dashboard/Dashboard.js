@@ -1,7 +1,28 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth/dist/index.cjs';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Loading from '../../Components/Loading';
+import auth from '../../Hooks/Firebase.Init';
 
 const Dashboard = () => {
+    const navigate = useNavigate();
+    const [user, loading, error] = useAuthState(auth);
+
+    useEffect(() => {
+        if (user?.emailVerified === false) {
+            navigate('/verify-email');
+        };
+    }, [user]);
+
+    if (loading) {
+        return <Loading />;
+    };
+
+    if (error) {
+        toast.error(`${error?.message?.slice(17, -2)}`)
+    };
+
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
