@@ -5,7 +5,7 @@ const Admins = () => {
     const [admins, setAdmins] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => setAdmins(data));
     }, [admins]);
@@ -17,8 +17,8 @@ const Admins = () => {
                     <thead>
                         <tr>
                             <th>Serial</th>
-                            <th>Description</th>
-                            <th>Author</th>
+                            <th>Details</th>
+                            <th>Email</th>
                             <th>Action</th>
                         </tr>
                     </thead>
