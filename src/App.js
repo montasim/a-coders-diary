@@ -3,7 +3,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
-import About from "./Pages/About/About";
 import BlogPostDetails from "./Pages/BlogPostDetails/BlogPostDetails";
 import Contact from "./Pages/Contact/Contact";
 import Home from "./Pages/Home/Home";
@@ -25,6 +24,7 @@ import MyPosts from "./Pages/Dashboard/Posts/MyPosts";
 import EditPost from "./Pages/Dashboard/Posts/EditPost";
 import EditTag from "./Pages/Dashboard/Tags/EditTag";
 import AuthorDetails from "./Pages/AuthorDetails/AuthorDetails";
+import MyPortfolio from "./Pages/About/MyPortfolio";
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
           <Route path="create-admin" element={<CreateAdmins />} />
         </Route>
 
-        <Route path="about" element={<About />} />
+        <Route path="about" element={<MyPortfolio />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
