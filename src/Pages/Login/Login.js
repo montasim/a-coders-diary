@@ -49,7 +49,7 @@ const Login = () => {
                     <p className="text-lg font-medium">Sign in to your account</p>
 
                     <div>
-                        <label htmlFor="email" className="text-sm font-medium">Email</label>
+                        <label htmlhtmlFor="email" className="text-sm font-medium">Email</label>
 
                         <div className="relative mt-1">
                             <input onBlur={e => setEmail(e.target.value)}
@@ -66,7 +66,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="text-sm font-medium">Password</label>
+                        <label htmlhtmlFor="password" className="text-sm font-medium">Password</label>
 
                         <div className="relative mt-1">
                             <input onBlur={e => setPassword(e.target.value)}

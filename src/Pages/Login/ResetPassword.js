@@ -42,7 +42,7 @@ const ResetPassword = () => {
                     <p className="text-lg font-medium">Enter your email address</p>
 
                     <div>
-                        <label htmlFor="email" className="text-sm font-medium">Email</label>
+                        <label htmlhtmlFor="email" className="text-sm font-medium">Email</label>
 
                         <div className="relative mt-1">
                             <input onBlur={(e) => setEmail(e.target.value)}

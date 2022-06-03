@@ -32,7 +32,7 @@ const Contact = () => {
 
                 <form onSubmit={giveSuggestions} action="" className="max-w-md mx-auto mt-8 mb-0 space-y-4">
                     <div>
-                        <label htmlFor="email" className="sr-only">Email</label>
+                        <label htmlhtmlFor="email" className="sr-only">Email</label>
 
                         <div className="relative">
                             <input onBlur={(e) => setSuggestBy(e.target.value)}
@@ -48,7 +48,7 @@ const Contact = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="sr-only">Suggestions</label>
+                        <label htmlhtmlFor="password" className="sr-only">Suggestions</label>
                         <div className="relative">
                             <textarea onBlur={(e) => setSuggestions(e.target.value)}
                                 className="w-full h-40 p-4 pr-12 text-sm border-success rounded-lg shadow-sm"
