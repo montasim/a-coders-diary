@@ -47,7 +47,7 @@ const AddTag = () => {
         fetch('https://a-coders-diary.herokuapp.com/add-tag', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             },
             body: JSON.stringify(tagData),
         })

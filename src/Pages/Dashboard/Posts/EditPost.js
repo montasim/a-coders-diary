@@ -88,7 +88,7 @@ const EditPost = () => {
         fetch('https://a-coders-diary.herokuapp.com/create-post', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             },
             body: JSON.stringify(postData),
         })
