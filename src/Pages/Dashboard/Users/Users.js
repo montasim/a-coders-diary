@@ -5,7 +5,7 @@ const Users = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => setUsers(data));
     }, [users]);
@@ -17,8 +17,8 @@ const Users = () => {
                     <thead>
                         <tr>
                             <th>Serial</th>
-                            <th>Description</th>
-                            <th>Author</th>
+                            <th>Details</th>
+                            <th>Email</th>
                             <th>Action</th>
                         </tr>
                     </thead>
