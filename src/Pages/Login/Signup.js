@@ -6,8 +6,9 @@ import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'rea
 import Loading from '../../Components/Loading';
 import { toast } from 'react-toastify';
 import { AiOutlineEye } from 'react-icons/ai';
-import { MdOutlineAlternateEmail } from 'react-icons/md';
+import { MdOutlineDriveFileRenameOutline, MdOutlineAlternateEmail } from 'react-icons/md';
 import signupImage from '../../Assets/Images/signup.jpg';
+import defaultUserImage from '../../Assets/Images/defaultUser.png';
 
 const Login = () => {
     const [
@@ -17,9 +18,15 @@ const Login = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [sendEmailVerification, sending, emailVerificationError] = useSendEmailVerification(auth);
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [passowrd, setPassword] = useState('');
     let errorMessage = '';
+    const userName = name;
+    const userEmail = email;
+    const userImg = user?.photoURL || user?.user?.photoURL || defaultUserImage;
+    const userCreationTime = new Date();
+    const userData = { userName, userEmail, userImg, userCreationTime };
 
     const createUser = async (event) => {
         event.preventDefault();
@@ -28,7 +35,38 @@ const Login = () => {
 
         await sendEmailVerification(email);
 
-        toast.success(`Check your email to verify your account`);
+        fetch('http://localhost:5000/create-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.insertedId) {
+                    toast.success(`Check your email to verify your account`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
 
         event.target.reset();
     };
@@ -53,6 +91,22 @@ const Login = () => {
                 </div>
 
                 <form onSubmit={createUser} action="" className="max-w-md mx-auto mt-8 mb-0 space-y-4">
+                    <div>
+                        <label htmlhtmlFor="name" className="sr-only">Name</label>
+
+                        <div className="relative">
+                            <input onBlur={(e) => setName(e.target.value)}
+                                type="text"
+                                className="w-full p-4 pr-12 text-sm border-success rounded-lg shadow-sm"
+                                placeholder="Enter name"
+                            />
+
+                            <span className="absolute inset-y-0 inline-flex items-center right-4">
+                                <MdOutlineDriveFileRenameOutline />
+                            </span>
+                        </div>
+                    </div>
+
                     <div>
                         <label htmlhtmlFor="email" className="sr-only">Email</label>
 
