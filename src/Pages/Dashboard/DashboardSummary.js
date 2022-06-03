@@ -11,13 +11,13 @@ const DashboardSummary = () => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('https://a-coders-diary.herokuapp.com/posts')
             .then(res => res.json())
             .then(data => setPosts(data));
     }, [posts]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/tags')
+        fetch('https://a-coders-diary.herokuapp.com/tags')
             .then(res => res.json())
             .then(data => setTags(data));
     }, [tags]);

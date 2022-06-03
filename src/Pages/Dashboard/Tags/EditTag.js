@@ -17,7 +17,7 @@ const EditTag = () => {
     const { _id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/edit-tag/${_id}`)
+        fetch(`https://a-coders-diary.herokuapp.com/edit-tag/${_id}`)
             .then(res => res.json())
             .then(data => setOldTagData(data));
     }, []);

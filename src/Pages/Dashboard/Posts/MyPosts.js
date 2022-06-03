@@ -6,7 +6,7 @@ const MyPosts = () => {
     const [myPosts, setMyPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('https://a-coders-diary.herokuapp.com/posts')
             .then(res => res.json())
             .then(data => setMyPosts(data));
     }, [myPosts]);

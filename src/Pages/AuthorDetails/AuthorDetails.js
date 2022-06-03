@@ -7,7 +7,7 @@ const AuthorDetails = () => {
     const [authorDetails, setAuthorDetails] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/author-details/${_id}`)
+        fetch(`https://a-coders-diary.herokuapp.com/author-details/${_id}`)
             .then(res => res.json())
             .then(data => setAuthorDetails(data));
     }, [authorDetails, _id]);

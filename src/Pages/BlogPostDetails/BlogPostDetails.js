@@ -13,7 +13,7 @@ const BlogPostDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/post-details/${_id}`)
+        fetch(`https://a-coders-diary.herokuapp.com/post-details/${_id}`)
             .then(res => res.json())
             .then(data => setPostDetails(data));
     }, [postDetails, _id]);

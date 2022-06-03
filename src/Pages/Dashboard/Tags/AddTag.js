@@ -44,7 +44,7 @@ const AddTag = () => {
     };
 
     const createTag = event => {
-        fetch('http://localhost:5000/add-tag', {
+        fetch('https://a-coders-diary.herokuapp.com/add-tag', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

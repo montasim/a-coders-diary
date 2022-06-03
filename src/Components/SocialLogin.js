@@ -31,7 +31,7 @@ const SocialLogin = () => {
         const userCreationTime = new Date();
         const userData = { userName, userEmail, userImg, userCreationTime };
 
-        fetch('http://localhost:5000/create-user', {
+        fetch('https://a-coders-diary.herokuapp.com/create-user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

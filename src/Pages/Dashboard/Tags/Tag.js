@@ -35,7 +35,7 @@ const Tag = ({ tag, index }) => {
     };
 
     const deleteTag = (_id) => {
-        fetch(`http://localhost:5000/delete-tag/${_id}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/delete-tag/${_id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())

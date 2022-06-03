@@ -35,7 +35,7 @@ const Post = ({ post }) => {
     };
 
     const deletePost = (_id) => {
-        fetch(`http://localhost:5000/delete-post/${_id}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/delete-post/${_id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())

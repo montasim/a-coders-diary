@@ -5,7 +5,7 @@ const Tags = () => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/tags')
+        fetch('https://a-coders-diary.herokuapp.com/tags')
             .then(res => res.json())
             .then(data => setTags(data));
     }, [tags]);

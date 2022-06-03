@@ -30,13 +30,13 @@ const EditPost = () => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/tags')
+        fetch('https://a-coders-diary.herokuapp.com/tags')
             .then(res => res.json())
             .then(data => setTags(data));
     }, [tags]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/edit-post/${_id}`)
+        fetch(`https://a-coders-diary.herokuapp.com/edit-post/${_id}`)
             .then(res => res.json())
             .then(data => setOldPostData(data));
     }, []);
@@ -85,7 +85,7 @@ const EditPost = () => {
     const createPost = event => {
         setPostDescription('Write your post description here');
 
-        fetch('http://localhost:5000/create-post', {
+        fetch('https://a-coders-diary.herokuapp.com/create-post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

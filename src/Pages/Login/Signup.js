@@ -35,7 +35,7 @@ const Login = () => {
 
         await sendEmailVerification(email);
 
-        fetch('http://localhost:5000/create-user', {
+        fetch('https://a-coders-diary.herokuapp.com/create-user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

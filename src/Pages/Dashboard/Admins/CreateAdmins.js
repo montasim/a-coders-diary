@@ -5,7 +5,7 @@ const CreateAdmins = () => {
     const [createAdmins, setCreateAdmins] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://a-coders-diary.herokuapp.com/users')
             .then(res => res.json())
             .then(data => setCreateAdmins(data));
     }, [createAdmins]);
