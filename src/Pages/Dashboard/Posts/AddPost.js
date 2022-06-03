@@ -24,7 +24,8 @@ const AddPost = () => {
     const postAuthor = user?.user?.email || user?.email;
     const postAuthorImg = user?.photoURL || user?.user?.photoURL;
     const postDateTime = new Date();
-    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime }; const [tags, setTags] = useState([]);
+    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime };
+    const [tags, setTags] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/tags')
@@ -113,7 +114,7 @@ const AddPost = () => {
             <input onBlur={e => setPostName(e.target.value)} type='text' className='input input-primary input-md w-full' placeholder='Write your post title here' required></input>
 
             <div className="flex flex-col lg:flex-row text-lg my-4">
-                <textarea className='w-full h-64 lg:h-96 bg-primary text-white text-justify p-8' defaultValue={postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
+                <textarea className='w-full h-64 lg:h-96 bg-primary text-white text-justify p-8' placeholder={postDescription} onChange={(e) => setPostDescription(e?.target?.value)} required></textarea>
 
                 <div className="w-full h-64 lg:h-96 bg-slate-200 p-8 overflow-auto">
                     <ReactMarkdown
@@ -125,9 +126,9 @@ const AddPost = () => {
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
-                    <option defaultValue>Choose post category</option>
+                    <option value="" selected disabled hidden>Choose post category</option>
                     {
-                        tags.map(tag => <option>{tag?.tagName}</option>)
+                        tags.map((tag) => <option>{tag?.tagName}</option>)
                     }
                 </select>
 
@@ -141,7 +142,7 @@ const AddPost = () => {
                     Create Post
                 </button>
             </div>
-        </form>
+        </form >
     );
 };
 

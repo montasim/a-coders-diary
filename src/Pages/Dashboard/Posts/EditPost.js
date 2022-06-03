@@ -27,6 +27,13 @@ const EditPost = () => {
     const { _id } = useParams();
     const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
     const [oldPostData, setOldPostData] = useState([]);
+    const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/tags')
+            .then(res => res.json())
+            .then(data => setTags(data));
+    }, [tags]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/edit-post/${_id}`)
@@ -133,9 +140,10 @@ const EditPost = () => {
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
-                    <option defaultValue={oldPostData?.postCategory} disabled>Choose post category</option>
-                    <option>T-shirts</option>
-                    <option>Mugs</option>
+                    <option selected disabled hidden>{oldPostData?.postCategory}</option>
+                    {
+                        tags.map((tag) => <option>{tag?.tagName}</option>)
+                    }
                 </select>
 
                 <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' defaultValue={oldPostData?.postTags} required></input>
