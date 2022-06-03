@@ -5,6 +5,7 @@ import Loading from './Loading';
 import { toast } from 'react-toastify';
 import { BsGoogle, BsGithub, BsFacebook, BsMicrosoft, BsTwitter } from 'react-icons/bs';
 import { FaYahoo } from 'react-icons/fa';
+import defaultUserImage from '../Assets/Images/defaultUser.png';
 
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -24,7 +25,44 @@ const SocialLogin = () => {
     };
 
     if (googleUser) {
-        toast(`Welcome ${googleUser?.displayName || googleUser?.user?.email?.split('@')[0]}`);
+        const userName = googleUser?.displayName || googleUser?.user?.email?.split('@')[0];
+        const userEmail = googleUser?.user?.email;
+        const userImg = googleUser?.user?.photoURL || googleUser?.user?.photoURL || defaultUserImage;
+        const userCreationTime = new Date();
+        const userData = { userName, userEmail, userImg, userCreationTime };
+
+        fetch('http://localhost:5000/create-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.insertedId) {
+                    toast.success(`Welcome ${googleUser?.displayName || googleUser?.user?.email?.split('@')[0]}`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
     };
 
     return (
