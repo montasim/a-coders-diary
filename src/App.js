@@ -24,6 +24,7 @@ import Posts from "./Pages/Dashboard/Posts/Posts";
 import MyPosts from "./Pages/Dashboard/Posts/MyPosts";
 import EditPost from "./Pages/Dashboard/Posts/EditPost";
 import EditTag from "./Pages/Dashboard/Tags/EditTag";
+import AuthorDetails from "./Pages/AuthorDetails/AuthorDetails";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="post-details/:_id" element={<BlogPostDetails />} />
+        <Route path="author-details/:_id" element={<AuthorDetails />} />
 
         <Route path="dashboard" element={<Dashboard />}>
           <Route index element={<DashboardSummary />} />
