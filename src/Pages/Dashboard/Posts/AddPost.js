@@ -24,7 +24,13 @@ const AddPost = () => {
     const postAuthor = user?.user?.email || user?.email;
     const postAuthorImg = user?.photoURL || user?.user?.photoURL;
     const postDateTime = new Date();
-    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime };
+    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime }; const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/tags')
+            .then(res => res.json())
+            .then(data => setTags(data));
+    }, [tags]);
 
     if (loading) {
         return <Loading />;
@@ -120,8 +126,9 @@ const AddPost = () => {
             <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
                     <option defaultValue>Choose post category</option>
-                    <option>T-shirts</option>
-                    <option>Mugs</option>
+                    {
+                        tags.map(tag => <option>{tag?.tagName}</option>)
+                    }
                 </select>
 
                 <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' placeholder='Write your post tags here' required></input>
