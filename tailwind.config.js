@@ -23,6 +23,6 @@ module.exports = {
     ],
   },
   plugins: [
-    require('daisyui', '@tailwindcss/forms')
+    require('daisyui', '@tailwindcss/forms', '@tailwindcss/line-clamp')
   ],
 }

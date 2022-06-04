@@ -74,23 +74,60 @@ const MyPost = ({ myPost, index }) => {
                             </th> */}
             <th>{index + 1}</th>
             <td>
-                <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                            <img src={postAuthorImg} alt="Avatar Tailwind CSS Component" />
+                <article>
+                    <div class="flex items-start p-6">
+                        <a href="" class="block shrink-0">
+                            <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                                alt="User Avatar"
+                                class="object-cover rounded-lg h-14 w-14"
+                            />
+                        </a>
+
+                        <div class="ml-4">
+                            <strong class="font-medium sm:text-lg">
+                                <a href="" class="hover:underline"> {postName} </a>
+                            </strong>
+
+                            <p class="text-sm text-gray-700 line-clamp-2">
+                                {postDescription?.length > 150 ? postDescription.substring(0, 120) + '...' : postDescription}
+                            </p>
+
+                            <div class="mt-2 sm:flex sm:items-center sm:gap-2">
+                                <div class="flex items-center text-gray-500">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                                        />
+                                    </svg>
+                                    <p class="ml-1 text-xs">{postCategory}</p>
+                                </div>
+
+                                <span class="hidden sm:block" aria-hidden="true">&middot;</span>
+
+                                <p class="hidden sm:block sm:text-xs sm:text-gray-500">
+                                    Author: {postAuthor?.split('@')[0]}
+                                </p>
+
+                                <span class="hidden sm:block" aria-hidden="true">&middot;</span>
+
+                                <p class="hidden sm:block sm:text-xs sm:text-gray-500">
+                                    {postDateTime?.slice(0, 10)}
+                                </p>
+
+                            </div>
                         </div>
                     </div>
-                    <div className='w-74'>
-                        <h3 className="font-bold">{postName?.slice(0, 32) + '...'}</h3>
-                        <p className="text-sm opacity-50">{postDescription?.length > 60 ? postDescription?.slice(0, 60) : postDescription}</p>
-                        <div class="badge badge-primary badge-sm">{postCategory}</div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <small>{postAuthor}</small>
-                <br />
-                <span className="text-xs opacity-50">{postDateTime?.slice(0, 10)}</span>
+                </article>
             </td>
             <td>
                 <div className="flex items-center">

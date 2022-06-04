@@ -35,7 +35,6 @@ const MyPosts = () => {
                         <tr>
                             <th>Serial</th>
                             <th>Description</th>
-                            <th>Author</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -51,7 +50,6 @@ const MyPosts = () => {
                         <tr>
                             <th>Serial</th>
                             <th>Description</th>
-                            <th>Author</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
