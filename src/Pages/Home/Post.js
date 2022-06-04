@@ -10,7 +10,7 @@ import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-tabl
 import { Link } from 'react-router-dom';
 
 const Post = ({ post }) => {
-    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime } = post;
+    const { _id, postName, postDescription, postCategory, postAuthor, postAuthorImg, postDateTime } = post;
 
     return (
         <Link
@@ -52,6 +52,11 @@ const Post = ({ post }) => {
 
             <dl class="flex mt-6">
                 <div class="flex flex-col-reverse">
+                    <dt class="text-sm font-medium text-gray-600">Category</dt>
+                    <dd class="text-xs text-gray-500">{postCategory}</dd>
+                </div>
+
+                <div class="flex flex-col-reverse ml-3 sm:ml-6">
                     <dt class="text-sm font-medium text-gray-600">Published</dt>
                     <dd class="text-xs text-gray-500">{postDateTime.slice(0, 10)}</dd>
                 </div>
