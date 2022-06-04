@@ -18,8 +18,6 @@ const Profile = () => {
             .then(data => setUserData(data));
     }, [currentUserEmail]);
 
-    console.log(userData);
-
     if (loading) {
         return <Loading />;
     };
