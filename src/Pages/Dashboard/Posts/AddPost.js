@@ -66,9 +66,11 @@ const AddPost = () => {
                 );
             }
         });
+
+        event.target.reset();
     };
 
-    const createPost = event => {
+    const createPost = () => {
         setPostDescription('Write your post description here');
 
         fetch('https://a-coders-diary.herokuapp.com/create-post', {
@@ -103,8 +105,6 @@ const AddPost = () => {
                     progress: undefined,
                 });
             });
-
-        event.target.reset();
     };
 
     return (
