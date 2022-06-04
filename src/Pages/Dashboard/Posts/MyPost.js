@@ -5,7 +5,7 @@ import { GiConfirmed } from 'react-icons/gi';
 import { ImCancelCircle } from 'react-icons/im';
 import { toast } from 'react-toastify';
 
-const MyPost = ({ myPost }) => {
+const MyPost = ({ myPost, index }) => {
     const { _id, postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime } = myPost;
 
     const deleteConfirmation = (_id) => {
@@ -72,7 +72,7 @@ const MyPost = ({ myPost }) => {
                                     <input type="checkbox" className="checkbox" />
                                 </label>
                             </th> */}
-            <th>1</th>
+            <th>{index + 1}</th>
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">

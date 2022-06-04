@@ -45,7 +45,7 @@ const MyPosts = () => {
                             myPosts?.length === 0 ?
                                 <p p className="text-center text-info text-xl my-20">Sorry! No post to display. Add post to display here.</p>
                                 :
-                                myPosts?.map((myPost, index) => <MyPost key={index} myPost={myPost} />)
+                                myPosts?.map((myPost, index) => <MyPost key={index} myPost={myPost} index={index} />)
                         }
                     </tbody>
                     <tfoot>
