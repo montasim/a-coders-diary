@@ -7,11 +7,13 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { GiConfirmed } from 'react-icons/gi';
 import { ImCancelCircle } from 'react-icons/im';
 import { useParams } from 'react-router-dom';
+import Loading from '../../../Components/Loading';
 
 const EditTag = () => {
     const [user, loading, error] = useAuthState(auth);
     const [tagName, setTagName] = useState('');
     const tagAuthor = user?.user?.email || user?.email;
+    const tagAuthorImg = user?.photoURL || user?.user?.photoURL;
     const tagDateTime = new Date();
     const [oldTagData, setOldTagData] = useState([]);
     const { _id } = useParams();
@@ -22,7 +24,15 @@ const EditTag = () => {
             .then(data => setOldTagData(data));
     }, []);
 
-    const tagData = { tagName, tagAuthor, tagDateTime };
+    if (loading) {
+        return <Loading />;
+    };
+
+    if (error) {
+        toast.error(`${error?.message?.slice(17, -2)}`)
+    };
+
+    const tagData = { tagName, tagAuthor, tagAuthorImg, tagDateTime };
 
     const postConfirmation = event => {
         event.preventDefault();
@@ -49,20 +59,43 @@ const EditTag = () => {
                 );
             }
         });
+
+        event.target.reset();
     };
 
     const createTag = event => {
-        toast.success(`Tag ${tagName} created successfully`, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-
-        event.target.reset();
+        fetch('https://a-coders-diary.herokuapp.com/add-tag', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(tagData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.insertedId) {
+                    toast.success(`Post ${tagName} created successfully`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
     };
 
     return (

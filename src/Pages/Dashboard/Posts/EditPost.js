@@ -40,13 +40,13 @@ const EditPost = () => {
         fetch(`https://a-coders-diary.herokuapp.com/edit-post/${_id}`)
             .then(res => res.json())
             .then(data => setOldPostData(data));
-    }, []);
+    }, [_id]);
 
     useEffect(() => {
         if (user?.emailVerified === false) {
             navigate('/verify-email');
         };
-    }, [user]);
+    }, [user, navigate]);
 
     if (loading) {
         return <Loading />;
