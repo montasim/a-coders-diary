@@ -48,7 +48,7 @@ const Admin = ({ admin, index }) => {
             </td>
             <td>
                 <div className="flex items-center">
-                    <button onClick={() => removeAdmin()} class="btn btn-xs btn-primary">Remove Admin</button>
+                    <button onClick={() => removeAdmin()} className="btn btn-xs btn-primary">Remove Admin</button>
                 </div>
             </td>
         </tr >

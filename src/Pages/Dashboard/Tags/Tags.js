@@ -24,7 +24,7 @@ const Tags = () => {
                     </thead>
                     <tbody>
                         {tags?.length === 0 ?
-                            <p class="text-center text-info text-xl my-20">Sorry! No tags to display. Add tag to display here.</p>
+                            <p className="text-center text-info text-xl my-20">Sorry! No tags to display. Add tag to display here.</p>
                             : tags.map((tag, index) => <Tag key={index} tag={tag} index={index} />)
                         }
                     </tbody>

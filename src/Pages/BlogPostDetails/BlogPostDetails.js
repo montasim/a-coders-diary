@@ -52,7 +52,7 @@ const BlogPostDetails = () => {
                         remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
                         children={postCategory + ' : ' + postName} />
                 </h1>
-                <div class="badge badge-primary my-2">{postCategory}</div>
+                <div className="badge badge-primary my-2">{postCategory}</div>
                 <p className="text-base font-normal text-gray-600 flex items-center">
                     <FiClock className='mr-2' />
                     <small>{postDateTime?.slice(0, 10)}</small>

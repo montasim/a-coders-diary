@@ -24,7 +24,7 @@ const CreateAdmins = () => {
                     </thead>
                     <tbody>
                         {createAdmins?.length === 0 ?
-                            <p class="text-center text-info text-xl my-20">Sorry! No user to display. Can not create admin if no registered user.</p>
+                            <p className="text-center text-info text-xl my-20">Sorry! No user to display. Can not create admin if no registered user.</p>
                             : createAdmins?.map((createAdmin, index) => <CreateAdmin key={index} createAdmin={createAdmin} index={index} />)
                         }
                     </tbody>

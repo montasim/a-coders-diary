@@ -47,7 +47,7 @@ const CreateAdmin = ({ createAdmin, index }) => {
         </td>
         <td>
             <div className="flex items-center">
-                <button onClick={() => makeAdmin()} class="btn btn-xs btn-primary">Make Admin</button>
+                <button onClick={() => makeAdmin()} className="btn btn-xs btn-primary">Make Admin</button>
             </div>
         </td>
     </tr >

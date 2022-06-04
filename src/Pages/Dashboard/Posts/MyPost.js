@@ -75,21 +75,21 @@ const MyPost = ({ myPost, index }) => {
             <th>{index + 1}</th>
             <td>
                 <article>
-                    <div class="flex items-start p-6">
-                        <div class="ml-4">
-                            <strong class="font-medium sm:text-lg">
-                                <a href="" class="hover:underline"> {postName} </a>
+                    <div className="flex items-start p-6">
+                        <div className="ml-4">
+                            <strong className="font-medium sm:text-lg">
+                                <a href="" className="hover:underline"> {postName} </a>
                             </strong>
 
-                            <p class="text-sm text-gray-700 line-clamp-2">
+                            <p className="text-sm text-gray-700 line-clamp-2">
                                 {postDescription?.length > 150 ? postDescription.substring(0, 120) + '...' : postDescription}
                             </p>
 
-                            <div class="mt-2 sm:flex sm:items-center sm:gap-2">
-                                <div class="flex items-center text-gray-500">
+                            <div className="mt-2 sm:flex sm:items-center sm:gap-2">
+                                <div className="flex items-center text-gray-500">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="w-4 h-4"
+                                        className="w-4 h-4"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -101,18 +101,18 @@ const MyPost = ({ myPost, index }) => {
                                             d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
                                         />
                                     </svg>
-                                    <p class="ml-1 text-xs">{postCategory}</p>
+                                    <p className="ml-1 text-xs">{postCategory}</p>
                                 </div>
 
-                                <span class="hidden sm:block" aria-hidden="true">&middot;</span>
+                                <span className="hidden sm:block" aria-hidden="true">&middot;</span>
 
-                                <p class="hidden sm:block sm:text-xs sm:text-gray-500">
+                                <p className="hidden sm:block sm:text-xs sm:text-gray-500">
                                     {postAuthor?.split('@')[0]}
                                 </p>
 
-                                <span class="hidden sm:block" aria-hidden="true">&middot;</span>
+                                <span className="hidden sm:block" aria-hidden="true">&middot;</span>
 
-                                <p class="hidden sm:block sm:text-xs sm:text-gray-500">
+                                <p className="hidden sm:block sm:text-xs sm:text-gray-500">
                                     {postDateTime?.slice(0, 10)}
                                 </p>
 

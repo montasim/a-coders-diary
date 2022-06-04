@@ -14,8 +14,8 @@ const Posts = () => {
         <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-8'>
             {
                 posts?.length === 0 ?
-                    <div class="card w-96 bg-base-100 shadow-xl mx-auto">
-                        <div class="card-body text-center text-info text-xl">
+                    <div className="card w-96 bg-base-100 shadow-xl mx-auto">
+                        <div className="card-body text-center text-info text-xl">
                             <p>Sorry! No post to display.</p>
                         </div>
                     </div>

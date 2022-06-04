@@ -13,10 +13,10 @@ const AuthorDetails = () => {
     }, [authorDetails, _id]);
 
     return (
-        <div class="card lg:card-side bg-base-100 shadow-xl m-20 p-6">
+        <div className="card lg:card-side bg-base-100 shadow-xl m-20 p-6">
             <figure><img src="https://api.lorem.space/image/album?w=400&h=400" alt="Album" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">Author Name</h2>
+            <div className="card-body">
+                <h2 className="card-title">Author Name</h2>
                 <p>Author Rank</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, quidem error quisquam doloribus, hic exercitationem similique necessitatibus placeat mollitia harum recusandae. Fuga ipsam eum doloribus reprehenderit ipsum reiciendis obcaecati natus!</p>
                 <div className="flex items-center gap-x-2 mt-4">
