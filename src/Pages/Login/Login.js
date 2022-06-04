@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../Components/Loading';
 import SocialLogin from '../../Components/SocialLogin';
@@ -18,6 +18,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     let errorMessage = '';
+    const navigate = useNavigate();
 
     const login = event => {
         event.preventDefault();
@@ -34,6 +35,8 @@ const Login = () => {
 
     if (user) {
         toast.success(`Welcome ${user?.displayName || user?.user?.email?.split('@')[0]}`);
+
+        navigate('/dashboard');
     };
 
     return (

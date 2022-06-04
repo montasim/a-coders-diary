@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { BsGoogle, BsGithub, BsFacebook, BsMicrosoft, BsTwitter } from 'react-icons/bs';
 import { FaYahoo } from 'react-icons/fa';
 import defaultUserImage from '../Assets/Images/defaultUser.png';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -15,6 +16,7 @@ const SocialLogin = () => {
     const [signInWithTwitter, twitterUser, twitterLoading, twitterError] = useSignInWithTwitter(auth);
     const [signInWithYahoo, yahooUser, yahooLoading, yahooError] = useSignInWithYahoo(auth);
     let errorMessage = googleError || facebookError || githubError || microsoftError || twitterError || yahooError;
+    const navigate = useNavigate();
 
     if (googleError || facebookError || githubError || microsoftError || twitterError || yahooError) {
         errorMessage = <p className='text-center text-red-500 text-lg'>{errorMessage?.message?.slice(17, -2)}</p>
@@ -71,6 +73,8 @@ const SocialLogin = () => {
                         });
                 };
             });
+
+        navigate('/dashboard');
     };
 
     return (
