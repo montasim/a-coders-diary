@@ -26,7 +26,11 @@ const MyPosts = () => {
                     <tbody>
                         {
                             myPosts?.length === 0 ?
-                                <p class="text-center text-info text-xl my-20">Sorry! No post to display. Add post to display here.</p>
+                                <div class="card w-96 bg-base-100 shadow-xl mx-auto my-10">
+                                    <div class="card-body text-center text-info text-xl">
+                                        <p>Sorry! No post to display. Add post to display here.</p>
+                                    </div>
+                                </div>
                                 :
                                 myPosts?.map((myPost, index) => <MyPost key={index} myPost={myPost} />)
                         }
