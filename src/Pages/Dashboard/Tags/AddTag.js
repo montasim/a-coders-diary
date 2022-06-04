@@ -41,9 +41,11 @@ const AddTag = () => {
                 );
             }
         });
+
+        event.target.reset();
     };
 
-    const createTag = event => {
+    const createTag = () => {
         fetch('https://a-coders-diary.herokuapp.com/add-tag', {
             method: 'POST',
             headers: {
@@ -76,9 +78,6 @@ const AddTag = () => {
                     progress: undefined,
                 });
             });
-
-
-        event.target.reset();
     };
 
     return (
