@@ -1,8 +1,69 @@
 import React from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 import { Link } from 'react-router-dom';
+import { GiConfirmed } from 'react-icons/gi';
+import { ImCancelCircle } from 'react-icons/im';
+import { toast } from 'react-toastify';
 
 const User = ({ user, index }) => {
-    const { userName, userEmail, userImg, userCreationTime } = user;
+    const { _id, userName, userEmail, userImg, userCreationTime } = user;
+
+    const deleteConfirmation = (_id) => {
+
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='bg-gradient-to-r from-primary to-secondary p-8 text-white rounded-lg w-96'>
+                        <h1 className='text-xl mb-4'>Are you sure?</h1>
+                        <p>Your tag will be public so be careful before proceed.</p>
+
+                        <div className='flex justify-between mt-8'>
+                            <button className='btn btn-info w-36 flex items-center' onClick={onClose}>
+                                <ImCancelCircle className='text-2xl mr-4' />
+                                Cancel
+                            </button>
+
+                            <button className='btn btn-info w-36 flex items-center' onClick={() => deleteUser(_id)}>
+                                <GiConfirmed className='text-2xl mr-4' />
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+        });
+    };
+
+    const deleteUser = (_id) => {
+        fetch(`http://localhost:5000/delete-user/${_id}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data?.deletedCount === 1) {
+                    toast?.success(`User ${userName} deleted successfully`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                };
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+    };
 
     return (
         <tr>
@@ -32,7 +93,7 @@ const User = ({ user, index }) => {
             </td>
             <td>
                 <div className="flex items-center">
-                    <button
+                    <button onClick={() => deleteConfirmation(_id)}
                         className="z-30 block p-2 text-red-700 transition-all bg-red-100 border-2 border-white rounded-full hover:scale-110 focus:outline-none focus:ring active:bg-red-50"
                         type="button"
                     >
