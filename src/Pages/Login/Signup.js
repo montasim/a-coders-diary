@@ -31,21 +31,49 @@ const Login = () => {
     const createUser = async (event) => {
         event.preventDefault();
 
-        createUserWithEmailAndPassword(email, passowrd);
-
-        await sendEmailVerification(email);
-
-        fetch('https://a-coders-diary.herokuapp.com/create-user', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(userData),
+        fetch(`http://localhost:5000/users?userEmail=${email}`, {
+            method: 'GET'
         })
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
-                if (data?.insertedId) {
-                    toast.success(`Check your email to verify your account`, {
+                if (data.length === 0) {
+                    fetch('https://a-coders-diary.herokuapp.com/create-user', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data?.insertedId) {
+                                toast.success(`Check your email to verify your account`, {
+                                    position: "top-center",
+                                    autoClose: 5000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                });
+                            };
+                        })
+                        .catch((error) => {
+                            toast.error(`Error: ${error}`, {
+                                position: "top-center",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                            });
+                        });
+
+                    event.target.reset();
+                }
+                else {
+                    toast.error(`Email is already in use!`, {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -54,21 +82,12 @@ const Login = () => {
                         draggable: true,
                         progress: undefined,
                     });
-                };
-            })
-            .catch((error) => {
-                toast.error(`Error: ${error}`, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                }
             });
 
-        event.target.reset();
+        createUserWithEmailAndPassword(email, passowrd);
+
+        await sendEmailVerification(email);
     };
 
     if (loading || sending) {
@@ -92,7 +111,7 @@ const Login = () => {
 
                 <form onSubmit={createUser} action="" className="max-w-md mx-auto mt-8 mb-0 space-y-4">
                     <div>
-                        <label htmlhtmlFor="name" className="sr-only">Name</label>
+                        <label htmlFor="name" className="sr-only">Name</label>
 
                         <div className="relative">
                             <input onBlur={(e) => setName(e.target.value)}
@@ -108,7 +127,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label htmlhtmlFor="email" className="sr-only">Email</label>
+                        <label htmlFor="email" className="sr-only">Email</label>
 
                         <div className="relative">
                             <input onBlur={(e) => setEmail(e.target.value)}
@@ -124,7 +143,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label htmlhtmlFor="password" className="sr-only">Password</label>
+                        <label htmlFor="password" className="sr-only">Password</label>
                         <div className="relative">
                             <input onBlur={(e) => setPassword(e.target.value)}
                                 type="password"
