@@ -64,7 +64,7 @@ const Navbar = () => {
                     user ?
                         <div className="avatar dropdown dropdown-hover dropdown-end">
                             <strong className="inline-flex items-center px-5 py-1.5 rounded-full">
-                                <span className="text-md font-medium mr-2 lg:hidden">
+                                <span className="text-md font-medium mr-2 hidden lg:block">
                                     {user?.email?.split('@')[0]}
                                 </span>
 
@@ -74,6 +74,7 @@ const Navbar = () => {
                             </strong>
 
                             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
+                                <li className='block lg:hidden lowercase'><Link to='/profile'>{user?.email?.split('@')[0]}</Link></li>
                                 <li><Link to='/profile'>Profile</Link></li>
                                 <li onClick={() => logout()}><Link to='/'>Logout</Link></li>
                             </ul>

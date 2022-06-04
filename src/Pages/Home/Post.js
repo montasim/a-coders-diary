@@ -36,7 +36,12 @@ const Post = ({ post }) => {
                     </strong>
 
                     <h2 className="mt-4 text-lg font-medium sm:text-xl">
-                        <Link to={`/post-details/${_id}`} className="hover:underline"> {postName} </Link>
+                        <Link to={`/post-details/${_id}`} className="hover:underline">
+                            <ReactMarkdown
+                                rehypePlugins={[rehypeRaw]}
+                                remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
+                                children={postName?.slice(0, 50) + '...'} />
+                        </Link>
                     </h2>
 
                     <div className="mt-1 text-sm text-info">
