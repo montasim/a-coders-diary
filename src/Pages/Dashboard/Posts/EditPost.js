@@ -22,10 +22,11 @@ const EditPost = () => {
     const [postTags, setPostTags] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const postAuthor = user?.user?.email || user?.email;
+    const postAuthorImg = user?.photoURL || user?.user?.photoURL;
     const postDateTime = new Date();
     const navigate = useNavigate();
     const { _id } = useParams();
-    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postDateTime };
+    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime };
     const [oldPostData, setOldPostData] = useState([]);
     const [tags, setTags] = useState([]);
 
