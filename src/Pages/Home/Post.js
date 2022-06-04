@@ -10,71 +10,58 @@ import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-tabl
 import { Link } from 'react-router-dom';
 
 const Post = ({ post }) => {
-    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postDateTime } = post;
+    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime } = post;
 
     return (
-        <article className="p-6 bg-white sm:p-8 rounded-xl ring ring-success lg:mx-10 mx-4 my-6">
-            <div className="flex items-start">
-                <div
-                    className="hidden sm:grid sm:h-20 sm:w-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-primary"
-                    aria-hidden="true"
-                >
-                    <div className="flex items-center gap-1">
-                        <span className="h-8 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
-                        <span className="h-6 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
-                        <span className="h-4 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
-                        <span className="h-6 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
-                        <span className="h-8 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
-                    </div>
-                </div>
+        <Link
+            class="relative block p-8 overflow-hidden border border-gray-100 rounded-lg"
+            to={`/post-details/${_id}`}
+        >
+            <span
+                class="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-primary via-blue-500 to-secondary"
+            ></span>
 
-                <div className="sm:ml-8">
-                    <strong
-                        className="rounded bg-gradient-to-r from-primary to-secondary px-3 py-1.5 text-[10px] font-medium text-white"
-                    >
-                        {postCategory}
-                    </strong>
-
-                    <h2 className="mt-4 text-lg font-medium sm:text-xl">
-                        <Link to={`/post-details/${_id}`} className="hover:underline">
-                            <ReactMarkdown
-                                rehypePlugins={[rehypeRaw]}
-                                remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
-                                children={postName?.slice(0, 50) + '...'} />
-                        </Link>
-                    </h2>
-
-                    <div className="mt-1 text-sm text-info">
+            <div class="justify-between sm:flex">
+                <div>
+                    <h5 class="text-xl font-bold text-gray-900">
                         <ReactMarkdown
                             rehypePlugins={[rehypeRaw]}
                             remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
-                            children={postDescription?.slice(0, 215) + '...'} />
-                    </div>
+                            children={`${postName.length > 50 ? postName?.slice(0, 50) + '...' : postName}`} />
+                    </h5>
+                    <p class="mt-1 text-xs font-medium text-gray-600">{postAuthor.split('@')[0]}</p>
+                </div>
 
-                    <div className="mt-4 sm:flex sm:items-center sm:gap-2">
-                        <div className="flex items-center text-gray-500">
-                            <FiClock />
-                            <p className="ml-1 text-xs font-medium">{postDateTime?.slice(0, 10)}</p>
-                        </div>
-
-                        <span className="h-3 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
-
-                        <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                            Tags: {postTags}
-                        </p>
-                    </div>
+                <div class="flex-shrink-0 hidden ml-3 sm:block">
+                    <img
+                        class="object-cover w-12 h-12 rounded-lg shadow-sm"
+                        src={postAuthorImg}
+                        alt=""
+                    />
                 </div>
             </div>
-            <div className="flex justify-end">
-                <strong
-                    className="-mr-[2px] -mb-[2px] inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-gradient-to-r from-primary to-secondary py-1.5 px-3 text-white"
-                >
-                    <FaUserEdit className='mr-2' />
 
-                    <span className="text-[10px] font-medium sm:text-xs">{postAuthor?.split('@')[0]}</span>
-                </strong>
+            <div class="mt-4 sm:pr-8">
+                <p class="text-sm text-gray-500">
+                    <ReactMarkdown
+                        rehypePlugins={[rehypeRaw]}
+                        remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
+                        children={postDescription?.length > 210 ? postDescription?.slice(0, 210) + '...' : postDescription} />
+                </p>
             </div>
-        </article>
+
+            <dl class="flex mt-6">
+                <div class="flex flex-col-reverse">
+                    <dt class="text-sm font-medium text-gray-600">Published</dt>
+                    <dd class="text-xs text-gray-500">{postDateTime.slice(0, 10)}</dd>
+                </div>
+
+                <div class="flex flex-col-reverse ml-3 sm:ml-6">
+                    <dt class="text-sm font-medium text-gray-600">Reading time</dt>
+                    <dd class="text-xs text-gray-500">3 minute</dd>
+                </div>
+            </dl>
+        </Link>
     );
 };
 
