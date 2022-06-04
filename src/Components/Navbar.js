@@ -75,7 +75,7 @@ const Navbar = () => {
 
                             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-gradient-to-r from-primary to-secondary uppercase text-white text-sm rounded-box w-52">
                                 <li className='block lg:hidden lowercase'><Link to='/profile'>{user?.email?.split('@')[0]}</Link></li>
-                                <li><Link to='/profile'>Profile</Link></li>
+                                <li className='hidden lg:block'><Link to='/profile'>Profile</Link></li>
                                 <li onClick={() => logout()}><Link to='/'>Logout</Link></li>
                             </ul>
                         </div>
