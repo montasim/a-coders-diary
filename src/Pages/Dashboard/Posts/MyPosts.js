@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import Loading from '../../../Components/Loading';
 import auth from '../../../Hooks/Firebase.Init';
 import MyPost from './MyPost';
-import Post from './Post';
 
 const MyPosts = () => {
     const [myPosts, setMyPosts] = useState([]);

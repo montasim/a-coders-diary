@@ -6,7 +6,7 @@ import { ImCancelCircle } from 'react-icons/im';
 import { toast } from 'react-toastify';
 
 const MyPost = ({ myPost, index }) => {
-    const { _id, postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime } = myPost;
+    const { _id, postName, postDescription, postCategory, postAuthor, postAuthorImg, postDateTime } = myPost;
 
     const deleteConfirmation = (_id) => {
 
@@ -83,15 +83,14 @@ const MyPost = ({ myPost, index }) => {
                     <div className='w-74'>
                         <h3 className="font-bold">{postName?.slice(0, 32) + '...'}</h3>
                         <p className="text-sm opacity-50">{postDescription?.length > 60 ? postDescription?.slice(0, 60) : postDescription}</p>
-                        <p className='text-sm opacity-80'>Category: {postCategory}</p>
-                        <p className='text-xs'>Tags: <span className="badge badge-ghost badge-sm">{postTags}</span></p>
+                        <div class="badge badge-primary badge-sm">{postCategory}</div>
                     </div>
                 </div>
             </td>
             <td>
-                {postAuthor}
+                <small>{postAuthor}</small>
                 <br />
-                <span className="text-xs">{postDateTime?.slice(0, 10)}</span>
+                <span className="text-xs opacity-50">{postDateTime?.slice(0, 10)}</span>
             </td>
             <td>
                 <div className="flex items-center">
