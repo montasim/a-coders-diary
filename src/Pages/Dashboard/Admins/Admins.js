@@ -25,7 +25,8 @@ const Admins = () => {
                     <tbody>
                         {admins?.length === 0 ?
                             <p class="text-center text-info text-xl my-20">Sorry! No admin to display. Create admin to display here.</p>
-                            : admins?.map((admin, index) => <Admin key={index} admin={admin} index={index} />)
+                            : admins?.map((admin, index) =>
+                                <Admin key={index} admin={admin} index={index} />)
                         }
                     </tbody>
                     <tfoot>
