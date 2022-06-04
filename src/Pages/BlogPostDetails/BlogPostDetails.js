@@ -31,8 +31,8 @@ const BlogPostDetails = () => {
                         remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
                         children={postCategory + ' : ' + postName} />
                 </h1>
-                <p className="text-sm md:text-base font-normal text-gray-600">Category: {postCategory}</p>
-                <p className="text-xs md:text-base font-normal text-gray-600 flex items-center">
+                <div class="badge badge-primary my-2">{postCategory}</div>
+                <p className="text-base font-normal text-gray-600 flex items-center">
                     <FiClock className='mr-2' />
                     <small>{postDateTime?.slice(0, 10)}</small>
                 </p>
@@ -45,13 +45,9 @@ const BlogPostDetails = () => {
                     children={postDescription} />
             </div>
 
-            <div className="text-base md:text-sm text-gray-500 py-6">
-                Tags: {postTags} .
-            </div>
+            <hr className="border-b-2 border-gray-400 mb-8 mt-16" />
 
-            <hr className="border-b-2 border-gray-400 mb-8" />
-
-            <div className="flex w-full items-center font-sans px-4 py-12">
+            <div className="flex w-full items-center font-sans">
                 <img className="w-10 h-10 rounded-full mr-4" src={postAuthorImg} alt="Avatar of Author" />
                 <div className="flex-1 px-2">
                     <p className="font-bold text-sm leading-none mb-2">{postAuthor?.split('@')[0]}</p>
@@ -62,7 +58,7 @@ const BlogPostDetails = () => {
                 </div>
             </div>
 
-            <hr className="border-b-2 border-gray-400 mb-8" />
+            <hr className="border-b-2 border-gray-400 mt-8 mb-16" />
 
             <div className="font-sans flex justify-between content-center px-4 pb-12">
                 <div className="text-left">
