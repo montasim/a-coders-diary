@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth/dist/index.cjs';
+import { toast } from 'react-toastify';
+import Loading from '../../../Components/Loading';
+import auth from '../../../Hooks/Firebase.Init';
 import MyPost from './MyPost';
 import Post from './Post';
 
 const MyPosts = () => {
     const [myPosts, setMyPosts] = useState([]);
+    const [user, loading, error] = useAuthState(auth);
 
     useEffect(() => {
-        fetch('https://a-coders-diary.herokuapp.com/posts')
-            .then(res => res.json())
-            .then(data => setMyPosts(data));
-    }, [myPosts]);
+        if (user) {
+            fetch(`http://localhost:5000/my-posts?postAuthor=${user.email}`, {
+                method: 'GET'
+            })
+                .then(res => res.json())
+                .then(data => setMyPosts(data));
+        }
+    }, [user]);
+
+    if (loading) {
+        return <Loading />;
+    };
+
+    if (error) {
+        toast.error(`${error?.message?.slice(17, -2)}`);
+    };
 
     return (
         <div>
@@ -26,11 +43,7 @@ const MyPosts = () => {
                     <tbody>
                         {
                             myPosts?.length === 0 ?
-                                <div class="card w-96 bg-base-100 shadow-xl mx-auto my-10">
-                                    <div class="card-body text-center text-info text-xl">
-                                        <p>Sorry! No post to display. Add post to display here.</p>
-                                    </div>
-                                </div>
+                                <p p className="text-center text-info text-xl my-20">Sorry! No post to display. Add post to display here.</p>
                                 :
                                 myPosts?.map((myPost, index) => <MyPost key={index} myPost={myPost} />)
                         }
@@ -46,7 +59,7 @@ const MyPosts = () => {
 
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 
