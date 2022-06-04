@@ -31,37 +31,45 @@ const SocialLogin = () => {
         const userCreationTime = new Date();
         const userData = { userName, userEmail, userImg, userCreationTime };
 
-        fetch('https://a-coders-diary.herokuapp.com/create-user', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(userData),
+        fetch(`http://localhost:5000/users?userEmail=${userEmail}`, {
+            method: 'GET'
         })
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
-                if (data?.insertedId) {
-                    toast.success(`Welcome ${googleUser?.displayName || googleUser?.user?.email?.split('@')[0]}`, {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
+                if (data.length === 0) {
+                    fetch('https://a-coders-diary.herokuapp.com/create-user', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data?.insertedId) {
+                                toast.success(`Welcome ${googleUser?.displayName || googleUser?.user?.email?.split('@')[0]}`, {
+                                    position: "top-center",
+                                    autoClose: 5000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                });
+                            };
+                        })
+                        .catch((error) => {
+                            toast.error(`Error: ${error}`, {
+                                position: "top-center",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                            });
+                        });
                 };
-            })
-            .catch((error) => {
-                toast.error(`Error: ${error}`, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
             });
     };
 
