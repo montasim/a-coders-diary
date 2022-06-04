@@ -24,12 +24,12 @@ const BlogPostDetails = () => {
     return (
         <section className='mx-8'>
             <div className="font-sans mb-6">
-                <p className="text-base md:text-sm text-green-500 font-bold">&lt; <Link to="/" className="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">BACK TO BLOG</Link></p>
+                <p className="text-base md:text-sm text-primary font-bold">&lt; <Link to="/" className="text-base md:text-sm text-primary font-bold no-underline hover:underline">BACK TO BLOG</Link></p>
                 <h1 className="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">
                     <ReactMarkdown
                         rehypePlugins={[rehypeRaw]}
                         remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkGfm, remarkMath, rehypeKatex, remarkExtendedTable]}
-                        children={postName} />
+                        children={postCategory + ' : ' + postName} />
                 </h1>
                 <p className="text-sm md:text-base font-normal text-gray-600">Category: {postCategory}</p>
                 <p className="text-xs md:text-base font-normal text-gray-600 flex items-center">
