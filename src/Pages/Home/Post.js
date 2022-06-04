@@ -49,7 +49,7 @@ const Post = ({ post }) => {
                     <div className="mt-4 sm:flex sm:items-center sm:gap-2">
                         <div className="flex items-center text-gray-500">
                             <FiClock />
-                            <p className="ml-1 text-xs font-medium">Posted on - {postDateTime?.slice(0, 10)}</p>
+                            <p className="ml-1 text-xs font-medium">{postDateTime?.slice(0, 10)}</p>
                         </div>
 
                         <span className="h-3 w-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"></span>
@@ -66,7 +66,7 @@ const Post = ({ post }) => {
                 >
                     <FaUserEdit className='mr-2' />
 
-                    <span className="text-[10px] font-medium sm:text-xs">Author - {postAuthor?.split('@')[0]}</span>
+                    <span className="text-[10px] font-medium sm:text-xs">{postAuthor?.split('@')[0]}</span>
                 </strong>
             </div>
         </article>
