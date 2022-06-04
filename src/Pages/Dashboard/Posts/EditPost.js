@@ -18,16 +18,15 @@ import { ImCancelCircle } from 'react-icons/im';
 const EditPost = () => {
     const [user, loading, error] = useAuthState(auth);
     const [postName, setPostName] = useState('');
-    const [postDescription, setPostDescription] = useState('Write your post description here');
-    const [postTags, setPostTags] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const postAuthor = user?.user?.email || user?.email;
     const postAuthorImg = user?.photoURL || user?.user?.photoURL;
     const postDateTime = new Date();
     const navigate = useNavigate();
     const { _id } = useParams();
-    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime };
     const [oldPostData, setOldPostData] = useState([]);
+    const [postDescription, setPostDescription] = useState(oldPostData?.description);
+    const postData = { postName, postDescription, postCategory, postAuthor, postAuthorImg, postDateTime };
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -83,7 +82,7 @@ const EditPost = () => {
         });
     };
 
-    const createPost = event => {
+    const createPost = () => {
         setPostDescription('Write your post description here');
 
         fetch('https://a-coders-diary.herokuapp.com/create-post', {
@@ -118,8 +117,6 @@ const EditPost = () => {
                     progress: undefined,
                 });
             });
-
-        event.target.reset();
     };
 
     return (
@@ -140,19 +137,15 @@ const EditPost = () => {
             </div>
 
             <div className='flex flex-col lg:flex-row justify-between items-center'>
-                <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
-                    <option selected disabled hidden>{oldPostData?.postCategory}</option>
+                <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 required my-2">
+                    <option defaultValue disabled hidden>{oldPostData?.postCategory}</option>
                     {
-                        tags.map((tag) => <option>{tag?.tagName}</option>)
+                        tags.map((tag, index) => <option key={index}>{tag?.tagName}</option>)
                     }
                 </select>
 
-                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' defaultValue={oldPostData?.postTags} required></input>
-            </div>
-
-            <div className='flex justify-center items-center'>
                 <button type='submit'
-                    className="mt-8 px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
+                    className="px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
                 >
                     Create Post
                 </button>
