@@ -6,7 +6,7 @@ const Admin = ({ admin, index }) => {
     const { userName, userEmail, userImg, userCreationTime } = admin;
 
     const removeAdmin = () => {
-        fetch(`http://localhost:5000/remove-admin/${userEmail}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/remove-admin/${userEmail}`, {
             method: 'PUT',
         })
             .then(res => res.json())

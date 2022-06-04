@@ -33,7 +33,7 @@ const SocialLogin = () => {
         const userCreationTime = new Date();
         const userData = { userName, userEmail, userImg, userCreationTime };
 
-        fetch(`http://localhost:5000/users?userEmail=${userEmail}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/users?userEmail=${userEmail}`, {
             method: 'GET'
         })
             .then(res => res.json())

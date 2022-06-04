@@ -31,7 +31,7 @@ const Login = () => {
     const createUser = async (event) => {
         event.preventDefault();
 
-        fetch(`http://localhost:5000/users?userEmail=${email}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/users?userEmail=${email}`, {
             method: 'GET'
         })
             .then(res => res.json())

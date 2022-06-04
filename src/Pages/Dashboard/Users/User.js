@@ -35,7 +35,7 @@ const User = ({ user, index }) => {
     };
 
     const deleteUser = (_id) => {
-        fetch(`http://localhost:5000/delete-user/${_id}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/delete-user/${_id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())

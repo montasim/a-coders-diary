@@ -11,7 +11,7 @@ const MyPosts = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/my-posts?postAuthor=${user.email}`, {
+            fetch(`https://a-coders-diary.herokuapp.com/my-posts?postAuthor=${user.email}`, {
                 method: 'GET'
             })
                 .then(res => res.json())

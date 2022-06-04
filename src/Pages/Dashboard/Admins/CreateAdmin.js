@@ -6,7 +6,7 @@ const CreateAdmin = ({ createAdmin, index }) => {
     const { userName, userEmail, userImg, userRole, userCreationTime } = createAdmin;
 
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/create-admin/${userEmail}`, {
+        fetch(`https://a-coders-diary.herokuapp.com/create-admin/${userEmail}`, {
             method: 'PUT',
         })
             .then(res => res.json())
