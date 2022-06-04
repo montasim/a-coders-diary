@@ -19,12 +19,11 @@ const AddPost = () => {
     const [user, loading, error] = useAuthState(auth);
     const [postName, setPostName] = useState('');
     const [postDescription, setPostDescription] = useState('Write your post description here');
-    const [postTags, setPostTags] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const postAuthor = user?.user?.email || user?.email;
     const postAuthorImg = user?.photoURL || user?.user?.photoURL;
     const postDateTime = new Date();
-    const postData = { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime };
+    const postData = { postName, postDescription, postCategory, postAuthor, postAuthorImg, postDateTime };
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -124,23 +123,23 @@ const AddPost = () => {
                 </div>
             </div>
 
-            <div className='flex flex-col lg:flex-row justify-between items-center'>
-                <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 mb-4 required">
+            <div className='flex flex-col lg:flex-row justify-between items-center my-2'>
+                <select onBlur={e => setPostCategory(e.target.value)} className="select select-primary w-64 my-2 required">
                     <option value="" selected disabled hidden>Choose post category</option>
                     {
                         tags.map((tag) => <option>{tag?.tagName}</option>)
                     }
                 </select>
 
-                <input onBlur={e => setPostTags(e.target.value)} type='text' className='input input-primary input-md w-64' placeholder='Write your post tags here' required></input>
-            </div>
-
-            <div className='flex justify-center items-center'>
                 <button type='submit'
-                    className="mt-8 px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
+                    className="px-4 py-4 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary hover:bg-primary rounded-lg w-full lg:w-64"
                 >
                     Create Post
                 </button>
+            </div>
+
+            <div className='flex justify-center items-center'>
+
             </div>
         </form >
     );
