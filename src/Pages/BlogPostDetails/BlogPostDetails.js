@@ -7,11 +7,18 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkExtendedTable, extendedTableHandlers } from 'remark-extended-table';
 import { FiClock } from 'react-icons/fi';
+import { useAuthState } from 'react-firebase-hooks/auth/dist/index.cjs';
+import auth from '../../Hooks/Firebase.Init';
+import Loading from '../../Components/Loading';
+import { toast } from 'react-toastify';
 
 const BlogPostDetails = () => {
     const { _id } = useParams();
     const [postDetails, setPostDetails] = useState([]);
+    const [userData, setUserData] = useState([]);
     const navigate = useNavigate();
+    const [user, loading, error] = useAuthState(auth);
+    const currentUserEmail = user?.email || user?.user?.email;
 
     useEffect(() => {
         fetch(`https://a-coders-diary.herokuapp.com/post-details/${_id}`)
@@ -19,7 +26,21 @@ const BlogPostDetails = () => {
             .then(data => setPostDetails(data));
     }, [postDetails, _id]);
 
-    const { postName, postDescription, postTags, postCategory, postAuthor, postAuthorImg, postDateTime } = postDetails;
+    useEffect(() => {
+        fetch(`https://a-coders-diary.herokuapp.com/users?userEmail=${currentUserEmail}`)
+            .then(res => res.json())
+            .then(data => setUserData(data));
+    }, [currentUserEmail]);
+
+    if (loading) {
+        return <Loading />;
+    };
+
+    if (error) {
+        toast.error(`${error?.message?.slice(17, -2)}`);
+    };
+
+    const { postName, postDescription, postCategory, postAuthor, postAuthorImg, postDateTime } = postDetails;
 
     return (
         <section className='mx-8'>
@@ -51,7 +72,7 @@ const BlogPostDetails = () => {
                 <img className="w-10 h-10 rounded-full mr-4" src={postAuthorImg} alt="Avatar of Author" />
                 <div className="flex-1 px-2">
                     <p className="font-bold text-sm leading-none mb-2">{postAuthor?.split('@')[0]}</p>
-                    <p className="text-gray-600 text-xs md:text-base">Author Rank</p>
+                    <p className="text-gray-600 text-xs">Member since {userData?.[0]?.userCreationTime?.slice(0, 10)}</p>
                 </div>
                 <div className="justify-end">
                     <button className="bg-transparent hover:bg-primary border border-primary text-xs text-primary hover:text-white font-bold py-2 px-4 rounded-full">About Author</button>
