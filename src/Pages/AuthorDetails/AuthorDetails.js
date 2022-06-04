@@ -3,21 +3,21 @@ import { useParams } from 'react-router-dom';
 import { BsGoogle, BsGithub, BsFacebook, BsTwitter } from 'react-icons/bs';
 
 const AuthorDetails = () => {
-    const { _id } = useParams();
+    const { authorEmail } = useParams();
     const [authorDetails, setAuthorDetails] = useState([]);
 
     useEffect(() => {
-        fetch(`https://a-coders-diary.herokuapp.com/author-details/${_id}`)
+        fetch(`https://a-coders-diary.herokuapp.com/users?userEmail=${authorEmail}`)
             .then(res => res.json())
             .then(data => setAuthorDetails(data));
-    }, [authorDetails, _id]);
+    }, [authorEmail]);
 
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl m-20 p-6">
-            <figure><img src="https://api.lorem.space/image/album?w=400&h=400" alt="Album" /></figure>
+            <figure><img src={authorDetails[0]?.userImg} alt="Album" /></figure>
             <div className="card-body">
-                <h2 className="card-title">Author Name</h2>
-                <p>Author Rank</p>
+                <h2 className="card-title">{authorDetails[0]?.userName}</h2>
+                <p className='text-sm'>Member since {authorDetails[0]?.userCreationTime?.slice(0, 10)}</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, quidem error quisquam doloribus, hic exercitationem similique necessitatibus placeat mollitia harum recusandae. Fuga ipsam eum doloribus reprehenderit ipsum reiciendis obcaecati natus!</p>
                 <div className="flex items-center gap-x-2 mt-4">
                     <button

@@ -75,7 +75,7 @@ const BlogPostDetails = () => {
                     <p className="text-gray-600 text-xs">Member since {userData?.[0]?.userCreationTime?.slice(0, 10)}</p>
                 </div>
                 <div className="justify-end">
-                    <button className="bg-transparent hover:bg-primary border border-primary text-xs text-primary hover:text-white font-bold py-2 px-4 rounded-full">About Author</button>
+                    <button onClick={() => navigate(`/author-details/${postAuthor}`)} className="bg-transparent hover:bg-primary border border-primary text-xs text-primary hover:text-white font-bold py-2 px-4 rounded-full">About Author</button>
                 </div>
             </div>
 
