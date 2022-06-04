@@ -1,8 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CreateAdmin = ({ createAdmin, index }) => {
     const { userName, userEmail, userImg, userCreationTime } = createAdmin;
+
+    const makeAdmin = () => {
+        fetch(`http://localhost:5000/create-admin/${userEmail}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.modifiedCount === 1) {
+                    toast.success('Admin created successfully!');
+                }
+                else {
+                    toast.error('Admin creation failed!');
+                }
+            });
+    };
 
     return (
         <tr>
@@ -32,14 +48,7 @@ const CreateAdmin = ({ createAdmin, index }) => {
             </td>
             <td>
                 <div className="flex items-center">
-                    <button
-                        class="z-10 block p-2 text-green-700 transition-all bg-green-100 border-2 border-white rounded-full active:bg-green-50 hover:scale-110 focus:outline-none focus:ring"
-                        type="button"
-                    >
-                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                    </button>
+                    <button onClick={() => makeAdmin()} class="btn btn-xs btn-primary">Make Admin</button>
                 </div>
             </td>
         </tr >
