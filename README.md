@@ -27,6 +27,7 @@ This a blog site. We the developer face many problems in our daily life. Every t
 3. Cors
 4. Dotenv
 5. Nodemon
+6. MongoDB
 
 ### Hosting
 
