@@ -1,6 +1,6 @@
 ## A Coders Diary (Full-Stack)
 
-This repository contains a blog website. Developer often faces many problems in their daily life. Every time we need to search Google or StackOverflow to solve those problems. As humans, we often forget those problems from time to time. Whenever a user finds a solution to a problem, he can post the solution in this blog. So, next time it will be easier for him to solve a similar situation.
+This repository contains the Frontend of a blog website. Developer often faces many problems in their daily life. Every time we need to search Google or StackOverflow to solve those problems. Whenever a user finds a solution to a problem, he can post the solution in this blog. So, next time it will be easier for him to solve a similar situation.
 
 ### Website Link: https://a-coders-diary.web.app/
 
