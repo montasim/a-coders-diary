@@ -1,94 +1,147 @@
-## A Coders Diary (Full-Stack)
+# A Coder's Diary
 
-This repository contains the Frontend of a blog website. Developer often faces many problems in their daily life. Every time we need to search Google or StackOverflow to solve those problems. Whenever a user finds a solution to a problem, he can post the solution in this blog. So, next time it will be easier for him to solve a similar situation.
+A React and Firebase frontend for recording, publishing, and rediscovering solutions to everyday development problems.
 
-### Website Link: https://a-coders-diary.web.app/
+[![Live site](https://img.shields.io/badge/Live-Firebase-ffca28?logo=firebase&logoColor=black)](https://a-coders-diary.web.app/)
 
-### Client Side Code: https://github.com/montasim/a-coders-diary
+[Live site](https://a-coders-diary.web.app/) · [Backend repository](https://github.com/montasim/a-coders-diary-server)
 
-### Server Side Code: https://github.com/montasim/a-coders-diary-server
+> The Firebase-hosted frontend returned `200 OK` when checked on 4 August 2026. Its data requests still target `a-coders-diary.herokuapp.com`, a legacy backend address; posts, profiles, and dashboard features may fail if that service is unavailable.
 
-### Features
+## The idea
 
-1. Authentication (Firebase)
-2. Manage posts (CRUD operations)
-3. User profile
-4. Author Profile
-5. Dashboard
-6. Admin panel
-7. Markdown Editor
-8. React Router
-9. Firebase hosting
+Developers repeatedly search for fixes they have already discovered. A Coder's Diary turns those solutions into a personal, searchable publishing workflow with Markdown posts, author pages, tags, and an administration dashboard.
 
-### Technology Used
+## Features
 
-1. React JS
-2. Express.js
-3. Cors
-4. Dotenv
-5. Nodemon
-6. MongoDB
+- Email/password and social authentication through Firebase
+- Public post feed and post detail pages
+- Markdown rendering with GitHub-flavored Markdown, tables, math, and embedded HTML
+- Author and user profiles
+- Create, edit, and delete post workflows
+- Tag management
+- User and administrator management
+- Responsive Tailwind CSS and daisyUI interface
+- Firebase Hosting configuration
 
-### Hosting
+## Tech stack
 
-1. Client-side hosting: Firebase
-2. Server-side hosting: Heroku
+| Area | Technology |
+| --- | --- |
+| UI | React 18, Create React App |
+| Routing | React Router 6 |
+| Authentication | Firebase Authentication, React Firebase Hooks |
+| Content | React Markdown, remark/rehype plugins |
+| Styling | Tailwind CSS, daisyUI |
+| Notifications | React Toastify |
+| Hosting | Firebase Hosting |
 
+## Quick start
 
-<br>
-<br>
+### Prerequisites
 
-<!-- connect with me start -->
-<div align="center"> 
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&duration=1&pause=1000&repeat=false&width=410&lines=%F0%9F%93%AA+%F0%9D%97%99%F0%9D%97%98%F0%9D%97%98%F0%9D%97%9F+%F0%9D%97%99%F0%9D%97%A5%F0%9D%97%98%F0%9D%97%98+%F0%9D%97%A7%F0%9D%97%A2+%F0%9D%97%96%F0%9D%97%A2%F0%9D%97%A1%F0%9D%97%A7%F0%9D%97%94%F0%9D%97%96%F0%9D%97%A7+%F0%9D%97%A0%F0%9D%97%98+%F0%9D%97%94%F0%9D%97%A1%F0%9D%97%AC%F0%9D%97%A7%F0%9D%97%9C%F0%9D%97%A0%F0%9D%97%98" alt="Typing SVG" />
-</div>
+- Node.js and npm compatible with Create React App 5
+- A Firebase web application
+- A compatible A Coder's Diary backend
 
-<br>
+### Configure Firebase
 
-<!-- social media links start -->
-<table align="center">
-  <thead align="center">
-      <tr>
-          <th>
-              <a href="https://www.linkedin.com/in/montasim">
-                  <img alt="linkedin icon" src="https://cdn.simpleicons.org/linkedin" width="35px">
-              </a>
-          </th>
-          <th>
-              <a href="https://www.github.com/montasim">
-                  <img alt="github icon" src="https://cdn.simpleicons.org/github/white" width="35px">
-              </a>
-          </th>
-          <th>
-              <a href="https://stackoverflow.com/users/20348607/montasim">
-                  <img alt="github icon" src="https://cdn.simpleicons.org/stackoverflow" width="35px">
-              </a>
-          </th>
-          <th>
-              <a href="https://montasim-dev.web.app/">
-                  <img alt="web icon" src="https://cdn.simpleicons.org/googlechrome" width="35px">
-              </a>
-          </th>
-          <th>
-              <a href="mailto:montasimmamun@gmail.com">
-                  <img alt="gmail icon" src="https://cdn.simpleicons.org/gmail" width="35px">
-              </a>
-          </th>
-          <th>
-              <a href="https://www.facebook.com/montasimmamun/">
-                  <img alt="facebook icon" src="https://cdn.simpleicons.org/facebook" width="35px">
-              </a>
-          </th>
-          <th>
-              <a href="https://twitter.com/montasimmamun">
-                  <img alt="facebook icon" src="https://cdn.simpleicons.org/twitter" width="35px">
-              </a>
-          </th>
-      </tr>
-  </thead>
-</table>
-<!-- social media links end -->
-<!-- connect with me end -->
+Create an untracked `.env.local`:
 
-<br>
-<br>
+```dotenv
+REACT_APP_apiKey=<firebase-api-key>
+REACT_APP_authDomain=<project>.firebaseapp.com
+REACT_APP_projectId=<project-id>
+REACT_APP_storageBucket=<project>.appspot.com
+REACT_APP_messagingSenderId=<sender-id>
+REACT_APP_appId=<app-id>
+```
+
+Firebase web configuration identifies the client project; security still depends on Firebase rules and server-side authorization.
+
+### Install and run
+
+```bash
+git clone https://github.com/montasim/a-coders-diary.git
+cd a-coders-diary
+npm install
+npm start
+```
+
+The Create React App development server normally opens `http://localhost:3000`.
+
+## Backend dependency
+
+API URLs are hard-coded throughout `src/` to the historical Heroku service. To use another backend, replace those origins or introduce a single environment-based API client, for example:
+
+```dotenv
+REACT_APP_API_BASE_URL=http://localhost:5000
+```
+
+The current code does not yet read that variable; centralizing the API base URL is a recommended first refactor.
+
+## Routes
+
+| Route | Purpose |
+| --- | --- |
+| `/` | Public post feed |
+| `/post-details/:_id` | Read a post |
+| `/author-details/:authorEmail` | View an author |
+| `/dashboard/*` | Posts, tags, users, and administrators |
+| `/about`, `/contact` | Portfolio and contact pages |
+| `/login`, `/signup` | Authentication |
+| `/profile` | Current user profile |
+
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm test` | Start the CRA test runner |
+| `npm run eject` | Permanently expose CRA configuration |
+
+## Project structure
+
+```text
+src/
+├── Components/        # Shared navigation, footer, and auth UI
+├── Hooks/             # Firebase initialization and reusable hooks
+├── Pages/
+│   ├── Home/          # Public post listing
+│   ├── Dashboard/     # Posts, tags, users, and admin screens
+│   ├── Login/         # Authentication flows
+│   └── User/          # Profile
+├── App.js             # Route map
+└── index.js           # BrowserRouter entry point
+```
+
+## Deployment
+
+```bash
+npm run build
+firebase deploy
+```
+
+Deploying the static client does not deploy or repair the separate backend.
+
+## Current limitations
+
+- The hard-coded Heroku API origin is a single point of failure and may be retired.
+- There is no CI workflow and no meaningful application test suite beyond CRA scaffolding.
+- The project uses 2022-era dependencies and should be audited before active development.
+- Role and ownership enforcement must be guaranteed by the backend, never only by hidden UI.
+- Raw HTML rendering in Markdown requires careful server-side sanitization and content policy.
+- The repository has no root license file.
+
+## Contributing and security
+
+Use [GitHub Issues](https://github.com/montasim/a-coders-diary/issues) for reproducible bugs. Report authentication, authorization, or content-injection vulnerabilities privately to the maintainer.
+
+## Support
+
+If the project or its source is useful, you can [support the maintainer on SupportKori](https://www.supportkori.com/montasim).
+
+## License status
+
+No license file is present. Unless a license is added, the code is available for viewing but reuse requires permission from the copyright holder.
