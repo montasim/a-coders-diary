@@ -1,6 +1,17 @@
 {
   "name": "a-coders-diary",
   "version": "0.1.0",
+  "description": "React and Firebase frontend for publishing and rediscovering Markdown solutions to everyday software-development problems.",
+  "keywords": [
+    "firebase",
+    "jwt",
+    "nodejs",
+    "react-modal",
+    "reactjs",
+    "rest-api",
+    "tailwindcss",
+    "react"
+  ],
   "private": true,
   "dependencies": {
     "@tailwindcss/forms": "^0.5.2",
